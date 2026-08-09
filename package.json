@@ -1,0 +1,10 @@
+{
+  "name": "decision-brief-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Document renderers for the Decision Brief Generator. Python does the analysis; these two packages turn the results into a Word brief and a PowerPoint deck.",
+  "dependencies": {
+    "docx": "^9.0.0",
+    "pptxgenjs": "^3.12.0"
+  }
+}

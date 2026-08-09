@@ -1,0 +1,115 @@
+{
+  "gate": "WARN",
+  "worst_severity": "high",
+  "row_counts": {
+    "dark_stores": 8,
+    "suppliers": 8,
+    "skus": 266,
+    "assortment": 1350,
+    "inventory_daily": 737100,
+    "purchase_orders": 119358,
+    "orders": 483722,
+    "order_items": 1673293,
+    "courier_daily": 4360
+  },
+  "table_confidence": {
+    "dark_stores": 1.0,
+    "suppliers": 1.0,
+    "skus": 1.0,
+    "assortment": 1.0,
+    "inventory_daily": 0.95,
+    "purchase_orders": 1.0,
+    "orders": 0.88,
+    "order_items": 0.912,
+    "courier_daily": 1.0
+  },
+  "repairs": [
+    "orders: removed 1,916 exact duplicate rows",
+    "orders: collapsed 19 rows sharing a primary key ['order_id'] (kept first)",
+    "order_items: removed 708 exact duplicate rows",
+    "inventory_daily.closing_units: clamped 2,211 negative values to zero (flagged in closing_units_was_negative)",
+    "orders.actual_minutes: capped 39 physically impossible values at 120 min (percentile winsorising deliberately avoided \u2014 it would suppress genuine slow-service signal)"
+  ],
+  "issues": [
+    {
+      "check": "duplicate_rows",
+      "table": "orders",
+      "severity": "medium",
+      "detail": "identical rows appear more than once",
+      "affected_rows": 1916,
+      "affected_pct": 0.003945171180483345,
+      "threshold": null,
+      "repair": "deduplicated"
+    },
+    {
+      "check": "duplicate_primary_key",
+      "table": "orders",
+      "severity": "high",
+      "detail": "key ['order_id'] is not unique",
+      "affected_rows": 1935,
+      "affected_pct": 0.003984293441667679,
+      "threshold": 0.02,
+      "repair": "kept first occurrence"
+    },
+    {
+      "check": "duplicate_rows",
+      "table": "order_items",
+      "severity": "medium",
+      "detail": "identical rows appear more than once",
+      "affected_rows": 708,
+      "affected_pct": 0.0004229388154487363,
+      "threshold": null,
+      "repair": "deduplicated"
+    },
+    {
+      "check": "duplicate_primary_key",
+      "table": "order_items",
+      "severity": "high",
+      "detail": "key ['order_id', 'sku_id', 'unfulfilled'] is not unique",
+      "affected_rows": 708,
+      "affected_pct": 0.0004229388154487363,
+      "threshold": 0.02,
+      "repair": "kept first occurrence"
+    },
+    {
+      "check": "null_values",
+      "table": "orders",
+      "severity": "low",
+      "detail": "actual_minutes is null in some rows",
+      "affected_rows": 2914,
+      "affected_pct": 0.006000119425849931,
+      "threshold": 0.05,
+      "repair": "rows excluded from metrics using this column"
+    },
+    {
+      "check": "negative_value",
+      "table": "inventory_daily",
+      "severity": "medium",
+      "detail": "closing_units contains negative values (impossible for a measure)",
+      "affected_rows": 2211,
+      "affected_pct": 0.0029995929995929997,
+      "threshold": 0.01,
+      "repair": "clamped to zero and flagged"
+    },
+    {
+      "check": "impossible_value",
+      "table": "orders",
+      "severity": "medium",
+      "detail": "actual_minutes exceeds 120 min \u2014 not a credible quick-commerce delivery",
+      "affected_rows": 40,
+      "affected_pct": 8.236265512491326e-05,
+      "threshold": 0.005,
+      "repair": "winsorised at p99.5"
+    },
+    {
+      "check": "ledger_imbalance",
+      "table": "inventory_daily",
+      "severity": "medium",
+      "detail": "opening - sold - wasted != closing",
+      "affected_rows": 2211,
+      "affected_pct": 0.0029995929995929997,
+      "threshold": 0.02,
+      "repair": "imbalanced rows flagged"
+    }
+  ]
+}

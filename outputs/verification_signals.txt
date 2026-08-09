@@ -1,0 +1,51 @@
+==========================================================================
+PLANTED SIGNAL VERIFICATION
+==========================================================================
+
+S1  Supplier reliability — Gulf Fresh Produce (SUP01)
+    lead time  2.05d (sd 0.28) -> 3.23d (sd 1.48)
+    PO fill    99.6% -> 88.0%
+    Fresh Produce stockout-days 16.4% -> 26.1%   (all other categories 5.7% -> 6.1%)
+    worst stores: {'Business Bay': 0.303, 'Dubai Marina': 0.295, 'JLT': 0.279}
+
+S2  Dairy waste concentration
+    waste rate by city: {Abu Dhabi: 17.1%, Dubai: 2.5%, Sharjah: 4.0%}
+    network waste rate (all categories): 3.6%
+    SUP02 case pack: 10-17 units
+
+S3  Long tail
+    bottom 40% of 215 active SKUs -> 5.5% of revenue, 41.7% of waste cost
+    tail waste cost: AED 326,766
+
+S4  Replenishment cadence vs demand peak
+    fill rate by day: Mon 80.2%  Tue 87.7%  Wed 92.2%  Thu 96.4%  Fri 96.4%  Sat 91.6%  Sun 86.4%
+    network fill rate: 90.5%   (receipts land Mon/Wed only; Fri-Sat is the demand peak)
+
+S5  Misdiagnosis trap — DS07 Al Nahda
+              store_name       city  avg_delivery_min  cancel_rate  fleet_util_pct  fill_rate  waste_pct
+store_id                                                                                                
+DS01        Dubai Marina      Dubai            19.658        0.021          82.024      0.901      0.023
+DS02                 JLT      Dubai            20.032        0.022          83.415      0.902      0.026
+DS03        Business Bay      Dubai            19.031        0.020          80.230      0.901      0.018
+DS04           Al Barsha      Dubai            20.657        0.027          80.637      0.906      0.036
+DS05      Al Reem Island  Abu Dhabi            20.180        0.025          80.954      0.905      0.072
+DS06        Khalifa City  Abu Dhabi            21.177        0.030          79.488      0.907      0.090
+DS07            Al Nahda    Sharjah            31.798        0.085         125.172      0.911      0.026
+DS08            Al Majaz    Sharjah            20.851        0.028          81.316      0.913      0.046
+    -> DS07 delivery 31.8 min vs peer mean 20.2; fleet utilisation 125% vs 81%
+    -> but DS07 fill rate 91.1% vs peer 90.5% and waste 2.6% vs peer 4.4%
+    -> CORRECT DIAGNOSIS: fleet capacity, NOT inventory.
+
+S6  Ramadan seasonality (2026)
+    orders/day 814 -> 1167  (+43%)
+    share of orders 20:00-01:59: 24.8% -> 41.4%
+
+==========================================================================
+  S1  PASS
+  S2  PASS
+  S3  PASS
+  S4  PASS
+  S5  PASS
+  S6  PASS
+  6/6 signals present
+==========================================================================

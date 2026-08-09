@@ -1,0 +1,31 @@
+============================================================================
+RIDES — PLANTED SIGNAL VERIFICATION
+============================================================================
+
+R1  Airport morning supply constraint
+    unfulfilled 49.8% in window vs 7.8% outside it
+    surge 1.76x vs 1.09x
+    correlation of captain supply with surge: -0.45
+  [PASS] R1 surfaced as a supply finding, not a pricing one  — finding SPL-01
+  [PASS] R1 carries evidence that rules the intuitive cause out  — the surge-supply correlation is tagged as ruling-out evidence
+
+R2  First-week activation vs churn
+    churn 26.2% (not activated) vs 7.9% (activated) = 3.3x
+  [PASS] R2 surfaced as a captain-supply finding  — 3.3x churn multiple
+
+R3  ETA over-promise
+    corr(cancellation, promise gap)   = +0.997
+    corr(cancellation, absolute wait) = -0.030
+  [PASS] R3 surfaced, and attributed to the promise rather than the wait  — the gap explains cancellation better than the wait does
+
+Pipeline
+  [PASS] every finding carries evidence, method and a derivation  — 4 findings
+  [PASS] recommendation economics hold  — 3 recommendations
+  [PASS] a recommendation with payback beyond the window is downgraded  — R3=act, R1=act, R2=investigate
+  [PASS] Decision-Brief.docx produced  — 122 KB
+  [PASS] Decision-Brief.pptx produced  — 366 KB
+  [PASS] dashboard.html produced  — 180 KB
+
+============================================================================
+  10/10 checks passed
+============================================================================

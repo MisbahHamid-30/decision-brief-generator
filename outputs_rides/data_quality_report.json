@@ -1,0 +1,77 @@
+{
+  "gate": "WARN",
+  "worst_severity": "high",
+  "row_counts": {
+    "cities": 3,
+    "zones": 15,
+    "captains": 2600,
+    "trips": 344476,
+    "supply_demand_hourly": 131400,
+    "captain_weekly": 123322
+  },
+  "table_confidence": {
+    "cities": 1.0,
+    "zones": 1.0,
+    "captains": 1.0,
+    "trips": 0.898,
+    "supply_demand_hourly": 0.975,
+    "captain_weekly": 1.0
+  },
+  "repairs": [
+    "trips: removed 1,022 exact duplicate rows",
+    "trips: collapsed 11 rows sharing a primary key ['trip_id'] (kept first)",
+    "supply_demand_hourly.active_captains: clamped 263 negative values to zero (flagged in active_captains_was_negative)"
+  ],
+  "issues": [
+    {
+      "check": "duplicate_rows",
+      "table": "trips",
+      "severity": "medium",
+      "detail": "identical rows appear more than once",
+      "affected_rows": 1022,
+      "affected_pct": 0.002957954785548278,
+      "threshold": null,
+      "repair": "deduplicated"
+    },
+    {
+      "check": "duplicate_primary_key",
+      "table": "trips",
+      "severity": "high",
+      "detail": "key ['trip_id'] is not unique",
+      "affected_rows": 1033,
+      "affected_pct": 0.002989791872281185,
+      "threshold": 0.02,
+      "repair": "kept first occurrence"
+    },
+    {
+      "check": "null_values",
+      "table": "trips",
+      "severity": "low",
+      "detail": "eta_actual_min is null in some rows",
+      "affected_rows": 1728,
+      "affected_pct": 0.005001316897678498,
+      "threshold": 0.05,
+      "repair": "rows excluded from metrics using this column"
+    },
+    {
+      "check": "null_values",
+      "table": "trips",
+      "severity": "low",
+      "detail": "rider_rating is null in some rows",
+      "affected_rows": 15681,
+      "affected_pct": 0.04538521427806511,
+      "threshold": 0.05,
+      "repair": "rows excluded from metrics using this column"
+    },
+    {
+      "check": "negative_value",
+      "table": "supply_demand_hourly",
+      "severity": "medium",
+      "detail": "active_captains contains negative values (impossible for a measure)",
+      "affected_rows": 263,
+      "affected_pct": 0.0020015220700152206,
+      "threshold": 0.01,
+      "repair": "clamped to zero and flagged"
+    }
+  ]
+}

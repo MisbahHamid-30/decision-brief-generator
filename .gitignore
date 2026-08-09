@@ -1,0 +1,34 @@
+# The generated dataset — 126 MB, and fully reproducible from
+# src/generate_dummy_data.py with a fixed seed. Hosted on Drive instead;
+# link is in the README.
+data/careem_quik/
+data/careem_rides/
+data/dummy/
+
+# Generated outputs. Committed selectively — see the exception below.
+outputs/brief_payload.json
+outputs/findings.json
+outputs/charts/
+outputs_rides/brief_payload.json
+outputs_rides/findings.json
+outputs_rides/charts/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+package-lock.json
+
+# Tooling scaffolding, not part of the project
+AGENTS.md
+CLAUDE.md
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

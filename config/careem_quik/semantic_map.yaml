@@ -1,0 +1,170 @@
+# Semantic layer — binds raw columns to business concepts
+# ========================================================
+# The analysis engine never references a raw column name. It asks the semantic
+# layer for a concept ("revenue", "waste_units") and gets back whatever column
+# in whatever table carries it. Point this file at a different dataset and the
+# whole pipeline follows, without touching analysis code.
+
+dataset:
+  name: "Careem Quik — UAE dark-store network"
+  description: "Quick-commerce grocery supply chain. Synthetic data."
+  synthetic: true
+  currency: AED
+  fx:
+    USD: 3.6725          # AED per USD (pegged)
+  period_start: "2025-01-01"
+  period_end: "2026-06-30"
+
+# --------------------------------------------------------------------------
+# Tables: role, grain, keys
+# --------------------------------------------------------------------------
+tables:
+
+  dark_stores:
+    file: dark_stores.csv
+    role: dimension
+    entity: store
+    primary_key: [store_id]
+    label: store_name
+
+  suppliers:
+    file: suppliers.csv
+    role: dimension
+    entity: supplier
+    primary_key: [supplier_id]
+    label: supplier_name
+
+  skus:
+    file: skus.csv
+    role: dimension
+    entity: sku
+    primary_key: [sku_id]
+    label: sku_name
+    foreign_keys:
+      supplier_id: suppliers.supplier_id
+
+  assortment:
+    file: assortment.csv
+    role: bridge
+    primary_key: [store_id, sku_id]
+    foreign_keys:
+      store_id: dark_stores.store_id
+      sku_id: skus.sku_id
+
+  inventory_daily:
+    file: inventory_daily.csv
+    role: fact
+    grain: [date, store_id, sku_id]
+    date_column: date
+    foreign_keys:
+      store_id: dark_stores.store_id
+      sku_id: skus.sku_id
+
+  purchase_orders:
+    file: purchase_orders.csv
+    role: fact
+    grain: [po_id]
+    date_column: order_date
+    foreign_keys:
+      supplier_id: suppliers.supplier_id
+      store_id: dark_stores.store_id
+      sku_id: skus.sku_id
+
+  orders:
+    file: orders.csv
+    role: fact
+    grain: [order_id]
+    date_column: order_datetime
+    foreign_keys:
+      store_id: dark_stores.store_id
+
+  order_items:
+    file: order_items.csv
+    role: fact
+    # A single order can carry both a fulfilled and an unfulfilled line for the
+    # same SKU (part of the requested quantity was in stock, part was not), so
+    # the unfulfilled flag is part of the grain.
+    grain: [order_id, sku_id, unfulfilled]
+    foreign_keys:
+      order_id: orders.order_id
+      sku_id: skus.sku_id
+
+  courier_daily:
+    file: courier_daily.csv
+    role: fact
+    grain: [date, store_id]
+    date_column: date
+    foreign_keys:
+      store_id: dark_stores.store_id
+
+# --------------------------------------------------------------------------
+# Concepts: the vocabulary the analysis engine speaks
+# --------------------------------------------------------------------------
+concepts:
+
+  # --- time & entity -------------------------------------------------------
+  date:              {table: inventory_daily, column: date,       kind: date}
+  order_timestamp:   {table: orders,          column: order_datetime, kind: datetime}
+  store:             {table: dark_stores,     column: store_id,   kind: entity}
+  sku:               {table: skus,            column: sku_id,     kind: entity}
+  supplier:          {table: suppliers,       column: supplier_id, kind: entity}
+
+  # --- segmentation dimensions --------------------------------------------
+  city:              {table: dark_stores, column: city,          kind: dimension}
+  category:          {table: skus,        column: category,      kind: dimension}
+  storage_temp:      {table: skus,        column: storage_temp,  kind: dimension}
+
+  # --- money ---------------------------------------------------------------
+  unit_price:        {table: skus, column: unit_price_aed, kind: money, unit: AED}
+  unit_cost:         {table: skus, column: unit_cost_aed,  kind: money, unit: AED}
+  basket_value:      {table: orders, column: basket_value_aed, kind: money, unit: AED}
+  basket_cogs:       {table: orders, column: basket_cogs_aed,  kind: money, unit: AED}
+  fleet_cost:        {table: courier_daily, column: fleet_cost_aed, kind: money, unit: AED}
+  store_rent:        {table: dark_stores, column: rent_aed_month, kind: money, unit: AED}
+
+  # --- inventory movement --------------------------------------------------
+  opening_units:     {table: inventory_daily, column: opening_units,  kind: measure}
+  received_units:    {table: inventory_daily, column: received_units, kind: measure}
+  sold_units:        {table: inventory_daily, column: sold_units,     kind: measure}
+  waste_units:       {table: inventory_daily, column: wasted_units,   kind: measure}
+  closing_units:     {table: inventory_daily, column: closing_units,  kind: measure}
+  lost_demand_units: {table: inventory_daily, column: lost_demand_units, kind: measure}
+  stockout_flag:     {table: inventory_daily, column: stockout_flag,  kind: flag}
+  ordered_units:     {table: inventory_daily, column: ordered_units,  kind: measure}
+
+  # --- procurement ---------------------------------------------------------
+  po_order_date:     {table: purchase_orders, column: order_date,    kind: date}
+  po_promised_date:  {table: purchase_orders, column: promised_date, kind: date}
+  po_received_date:  {table: purchase_orders, column: received_date, kind: date}
+  po_qty_ordered:    {table: purchase_orders, column: qty_ordered,   kind: measure}
+  po_qty_received:   {table: purchase_orders, column: qty_received,  kind: measure}
+  po_value:          {table: purchase_orders, column: po_value_aed,  kind: money, unit: AED}
+  promised_lead_time: {table: suppliers, column: promised_lead_time_days, kind: measure}
+
+  # --- service & fulfilment ------------------------------------------------
+  promised_minutes:  {table: orders, column: promised_minutes, kind: measure}
+  actual_minutes:    {table: orders, column: actual_minutes,   kind: measure}
+  order_status:      {table: orders, column: status,           kind: dimension}
+  active_captains:   {table: courier_daily, column: active_captains,   kind: measure}
+  orders_placed:     {table: courier_daily, column: orders_placed,     kind: measure}
+  fleet_capacity:    {table: courier_daily, column: capacity_orders,   kind: measure}
+  fleet_utilisation: {table: courier_daily, column: utilisation_pct,   kind: measure, unit: pct}
+
+  # --- product master ------------------------------------------------------
+  shelf_life:        {table: skus, column: shelf_life_days, kind: measure}
+  case_pack:         {table: skus, column: case_pack,       kind: measure}
+  slot_capacity:     {table: dark_stores, column: slot_capacity, kind: measure}
+
+# --------------------------------------------------------------------------
+# Derived metrics — formulas the KPI engine evaluates
+# --------------------------------------------------------------------------
+derived:
+  revenue:        "sold_units * unit_price"
+  cogs:           "sold_units * unit_cost"
+  gross_margin:   "revenue - cogs"
+  waste_cost:     "waste_units * unit_cost"
+  lost_revenue:   "lost_demand_units * unit_price"
+  lost_margin:    "lost_demand_units * (unit_price - unit_cost)"
+  fill_rate:      "sold_units / (sold_units + lost_demand_units)"
+  waste_rate:     "waste_units / received_units"
+  actual_lead_time: "po_received_date - po_order_date"

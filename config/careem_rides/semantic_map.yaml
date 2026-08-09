@@ -1,0 +1,117 @@
+# Semantic layer — Careem Rides marketplace
+# =========================================
+# Second domain, written to test whether the pipeline is actually portable.
+# Nothing here resembles the supply-chain profile: no inventory, no suppliers,
+# no shelf life. The unit of work is a trip and the constraint is captain
+# supply against rider demand in a zone at an hour.
+
+dataset:
+  name: "Careem Rides — UAE marketplace"
+  description: "Two-sided ride-hailing marketplace. Synthetic data."
+  domain: rides                # selects the KPI engine and detector set
+  synthetic: true
+  currency: AED
+  fx:
+    USD: 3.6725
+  period_start: "2025-07-01"
+  period_end: "2026-06-30"
+
+tables:
+
+  cities:
+    file: cities.csv
+    role: dimension
+    entity: city
+    primary_key: [city_id]
+    label: city_name
+
+  zones:
+    file: zones.csv
+    role: dimension
+    entity: zone
+    primary_key: [zone_id]
+    label: zone_name
+    foreign_keys:
+      city_id: cities.city_id
+
+  captains:
+    file: captains.csv
+    role: dimension
+    entity: captain
+    primary_key: [captain_id]
+    label: captain_id
+    date_column: joined_date
+    foreign_keys:
+      city_id: cities.city_id
+
+  trips:
+    file: trips.csv
+    role: fact
+    grain: [trip_id]
+    date_column: requested_at
+    foreign_keys:
+      city_id: cities.city_id
+      pickup_zone: zones.zone_id
+      captain_id: captains.captain_id
+
+  supply_demand_hourly:
+    file: supply_demand_hourly.csv
+    role: fact
+    grain: [datetime, zone_id]
+    date_column: datetime
+    foreign_keys:
+      zone_id: zones.zone_id
+
+  captain_weekly:
+    file: captain_weekly.csv
+    role: fact
+    grain: [captain_id, week_start]
+    date_column: week_start
+    foreign_keys:
+      captain_id: captains.captain_id
+
+concepts:
+
+  # --- time and entity ----------------------------------------------------
+  date:              {table: supply_demand_hourly, column: datetime, kind: datetime}
+  trip_timestamp:    {table: trips,      column: requested_at, kind: datetime}
+  city:              {table: cities,     column: city_id,   kind: entity}
+  zone:              {table: zones,      column: zone_id,   kind: entity}
+  captain:           {table: captains,   column: captain_id, kind: entity}
+
+  # --- segmentation -------------------------------------------------------
+  zone_type:         {table: zones,    column: zone_type,      kind: dimension}
+  vehicle_class:     {table: trips,    column: vehicle_class,  kind: dimension}
+  trip_status:       {table: trips,    column: status,         kind: dimension}
+
+  # --- marketplace volume -------------------------------------------------
+  requests:          {table: supply_demand_hourly, column: requests,        kind: measure}
+  completed:         {table: supply_demand_hourly, column: completed,       kind: measure}
+  unfulfilled:       {table: supply_demand_hourly, column: unfulfilled,     kind: measure}
+  active_captains:   {table: supply_demand_hourly, column: active_captains, kind: measure}
+  surge:             {table: supply_demand_hourly, column: avg_surge,       kind: measure}
+
+  # --- service ------------------------------------------------------------
+  eta_promised:      {table: trips, column: eta_promised_min, kind: measure}
+  eta_actual:        {table: trips, column: eta_actual_min,   kind: measure}
+  trip_duration:     {table: trips, column: duration_min,     kind: measure}
+  trip_distance:     {table: trips, column: distance_km,      kind: measure}
+  rider_rating:      {table: trips, column: rider_rating,     kind: measure}
+
+  # --- money --------------------------------------------------------------
+  fare:              {table: trips, column: fare_aed, kind: money, unit: AED}
+  captain_earnings:  {table: captain_weekly, column: earnings_aed, kind: money, unit: AED}
+
+  # --- captain supply -----------------------------------------------------
+  captain_joined:      {table: captains,       column: joined_date,       kind: date}
+  captain_status:      {table: captains,       column: status,            kind: dimension}
+  first_week_trips:    {table: captains,       column: first_week_trips,  kind: measure}
+  weekly_trips:        {table: captain_weekly, column: trips,             kind: measure}
+  online_hours:        {table: captain_weekly, column: online_hours,      kind: measure}
+  acceptance_rate:     {table: captain_weekly, column: acceptance_rate,   kind: measure}
+  weeks_tenure:        {table: captain_weekly, column: weeks_tenure,      kind: measure}
+
+derived:
+  fulfilment_rate:   "completed / requests"
+  eta_gap:           "eta_actual - eta_promised"
+  trips_per_hour:    "weekly_trips / online_hours"

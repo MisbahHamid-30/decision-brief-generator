@@ -1,0 +1,124 @@
+# Business rules — Careem Rides marketplace
+# =========================================
+# Same structure as the supply-chain profile. Every key the pipeline reads has
+# the same name and meaning; only the values and the metrics referenced differ.
+# That symmetry is the portability claim, made concrete.
+
+meta:
+  owner: "City Operations Director"
+  review_cadence: weekly
+  reporting_currency: AED
+
+# --------------------------------------------------------------------------
+scorecard:
+  - {label: "Fulfilment rate",        metric: fulfilment_rate,        target: fulfilment_rate,     fmt: pct}
+  - {label: "Rider cancel rate",      metric: rider_cancel_rate,      target: rider_cancel_rate,   fmt: pct}
+  - {label: "ETA p50 (min)",          metric: eta_p50,                target: eta_p50_min,         fmt: num}
+  - {label: "ETA promise gap (min)",  metric: eta_gap_mean,           target: eta_promise_gap_min, fmt: num}
+  - {label: "Captain 30-day churn",   metric: captain_churn_rate,     target: captain_churn_30d,   fmt: pct}
+  - {label: "Captain activation",     metric: captain_activation_rate, target: captain_activation, fmt: pct}
+  - {label: "Average surge",          metric: surge_mean,             target: surge_multiplier,    fmt: num}
+
+narrative:
+  trap:
+    title: "One zone looks like a pricing problem"
+    subtitle: "It is not. Surge is already high and supply is not responding"
+    tag: misdiagnosis_guard
+    chart: supply_vs_price
+    intuitive_cause: "pricing"
+
+waterfall:
+  base: {label: "Net revenue", metric: net_revenue_aed}
+  net_label: "Net contribution"
+  items:
+    - {label: "Lost revenue — unfulfilled requests", metric: lost_revenue_unfulfilled_aed, kind: leak}
+    - {label: "Lost revenue — rider cancellations",  metric: lost_revenue_cancel_aed,      kind: leak}
+    - {label: "Captain replacement cost",            metric: churn_replacement_cost_aed,   kind: leak}
+    - {label: "Surge subsidy above baseline",        metric: surge_subsidy_aed,            kind: cost}
+
+# --------------------------------------------------------------------------
+targets:
+  fulfilment_rate:       {target: 0.95,  floor: 0.90,  direction: higher_better}
+  rider_cancel_rate:     {target: 0.030, ceiling: 0.050, direction: lower_better}
+  eta_p50_min:           {target: 7.0,   ceiling: 9.0, direction: lower_better}
+  eta_promise_gap_min:   {target: 1.0,   ceiling: 2.5, direction: lower_better}
+  captain_churn_30d:     {target: 0.10,  ceiling: 0.15, direction: lower_better}
+  captain_activation:    {target: 0.55,  floor: 0.45,  direction: higher_better}
+  surge_multiplier:      {target: 1.12,  ceiling: 1.25, direction: lower_better}
+  captain_utilisation:   {target: 1.60,  floor: 1.20,  direction: higher_better}
+
+# --------------------------------------------------------------------------
+costs:
+  # Share of gross bookings retained by the platform.
+  take_rate: 0.22
+
+  # An unfulfilled request is not merely a lost trip — a rider who cannot get
+  # a car reduces their request rate for a period afterwards.
+  unfulfilled_demand_multiplier: 1.25
+  unfulfilled_demand_note: >
+    Lost net revenue x 1.25. The uplift represents reduced rider request rate
+    following a failed request. ASSUMPTION — not derived from this dataset.
+    Sensitivity: 1.0-1.6.
+
+  # Recruiting, onboarding, vehicle inspection and first-week incentive for a
+  # replacement captain.
+  captain_replacement_cost_aed: 420.0
+  captain_replacement_note: >
+    Acquisition (~180), onboarding and inspection (~90), first-week incentive
+    (~150). ASSUMPTION. Sensitivity: 300-600 AED.
+
+  # Surge above the baseline multiplier is effectively a supply subsidy: the
+  # rider pays it, but it suppresses demand and is not margin.
+  surge_baseline: 1.05
+
+  # A cancelled trip burns dispatch and captain repositioning time.
+  cancelled_trip_cost_aed: 6.50
+
+# --------------------------------------------------------------------------
+quality_gate:
+  max_duplicate_pk_pct:       {threshold: 0.02,  severity: critical}
+  max_orphan_fk_pct:          {threshold: 0.01,  severity: critical}
+  max_null_pct_key_measure:   {threshold: 0.05,  severity: high}
+  max_negative_pct:           {threshold: 0.01,  severity: high}
+  max_impossible_value_pct:   {threshold: 0.005, severity: medium}
+  min_date_coverage_pct:      {threshold: 0.95,  severity: high}
+  max_reconciliation_gap_pct: {threshold: 0.02,  severity: high}
+  confidence_penalty:
+    critical: 1.00
+    high:     0.25
+    medium:   0.10
+    low:      0.03
+
+# --------------------------------------------------------------------------
+materiality:
+  min_annualised_impact_aed: 40000
+  escalation_impact_aed: 500000
+  max_headline_findings: 5
+
+# --------------------------------------------------------------------------
+recommendations:
+  effort_scale: [low, medium, high]
+  horizon_buckets:
+    immediate: "0-30 days"
+    near_term: "1-3 months"
+    structural: "3-12 months"
+  owners:
+    - City Operations Director
+    - Supply Growth Lead
+    - Marketplace Pricing Lead
+    - Captain Experience Lead
+    - Rider Experience Lead
+  max_payback_months: 12
+  act_confidence_threshold: 0.65
+
+  capture_rate:
+    supply_repositioning:  0.55
+    activation_programme:  0.60
+    eta_recalibration:     0.80
+    pricing_change:        0.50
+
+  cost_assumptions:
+    repositioning_incentive_per_trip_aed: 6.0
+    activation_programme_cost_aed: 85000
+    eta_model_rework_cost_aed: 30000
+    pricing_experiment_cost_aed: 25000

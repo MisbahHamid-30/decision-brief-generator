@@ -1,0 +1,50 @@
+==============================================================================
+OUTPUT VERIFICATION
+==============================================================================
+
+A. Ground truth — was every planted signal surfaced?
+
+  [PASS] S1 supplier reliability surfaced  — lead sd 0.28→1.48, finding SUP-01
+  [PASS] S2 Abu Dhabi dairy write-off surfaced  — 17.1% vs network 3.6%, finding WST-01
+  [PASS] S3 long tail surfaced  — bottom 40% of SKUs = 5.5% of revenue
+  [PASS] S4 replenishment cadence surfaced  — worst day = Mon, spread 16.2%
+  [PASS] S5 misdiagnosis trap surfaced as a FLEET finding  — finding FLT-01, category fleet
+  [PASS] S5 diagnosed correctly — inventory explicitly ruled out  — DS07 fill 91.1% vs peers 90.4% — the store with the worst service has the best availability
+  [PASS] S6 seasonality surfaced  — peak window +43% vs baseline
+
+B. Arithmetic — do the recommendation economics hold?
+
+  [PASS] net = benefit − ongoing cost, for every recommendation
+  [PASS] payback = 12 × one-off ÷ net annual
+  [PASS] anything with a negative net is marked 'reject'  — R5b: benefit 83,218 vs cost 111,233
+  [PASS] no recommendation claims more than its finding is worth  — capture rates are all below 100%
+  [PASS] headline net benefit equals the sum of accepted actions  — AED 727,005
+
+C. Recomputation — do the headline numbers survive a fresh calculation?
+
+  [PASS] fill rate  — recomputed 0.9049 vs brief 0.9049
+  [PASS] waste rate  — recomputed 0.0362 vs brief 0.0362
+  [PASS] supplier OTIF  — recomputed 0.9088 vs brief 0.9088
+  [PASS] delivery p50  — recomputed 20.20 vs brief 20.20
+  [PASS] order cancellation rate  — recomputed 0.0320 vs brief 0.0320
+  [PASS] CAD-01 quotes the correct best and worst weekday fill rates  — recomputed best 96.4%, worst 80.2%
+  [PASS] FLT-01 delivery and cancellation figures  — recomputed p50 30.5 min, cancels 8.5%
+
+D. Integrity
+
+  [PASS] reported leakage counts root causes only, not symptoms  — 5 roots, AED 982,937; 5 symptoms excluded
+  [PASS] excluding symptoms materially changes the total  — AED 781,294 would have been double-counted
+  [PASS] every finding carries evidence, method and a derivation  — 12 findings checked
+  [PASS] no finding references a link that does not exist
+  [PASS] every recommendation states assumptions, risk and a success metric  — 7 recommendations checked
+  [PASS] all deliverables exist and are non-trivial  — 6 files
+  [PASS] synthetic-data labelling is present in the payload
+
+==============================================================================
+  A. Ground truth     7/7
+  B. Arithmetic       5/5
+  C. Recomputation    7/7
+  D. Integrity        7/7
+
+  TOTAL 26/26 checks passed
+==============================================================================

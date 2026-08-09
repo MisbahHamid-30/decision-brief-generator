@@ -1,0 +1,188 @@
+# Business rules — targets, thresholds and cost assumptions
+# =========================================================
+# Everything the tool needs in order to say "this is bad" rather than merely
+# "this is the number". Every assumption used in a recommendation must be
+# declared here so it can be disclosed in the brief appendix and challenged.
+
+meta:
+  owner: "Supply Chain Director"
+  review_cadence: weekly
+  reporting_currency: AED
+
+# --------------------------------------------------------------------------
+# Scorecard — which network metrics appear, and against which target.
+# `metric` names a key in the KPI engine's `network` dict. Nothing in the
+# analysis code names a metric; it all comes from here.
+# --------------------------------------------------------------------------
+scorecard:
+  - {label: "Fill rate",                metric: fill_rate,              target: fill_rate,              fmt: pct}
+  - {label: "Waste rate",               metric: waste_rate,             target: waste_rate,             fmt: pct}
+  - {label: "Supplier OTIF",            metric: otif,                   target: otif,                   fmt: pct}
+  - {label: "Delivery p50 (min)",       metric: delivery_p50,           target: delivery_minutes_p50,   fmt: num}
+  - {label: "Order cancel rate",        metric: cancel_rate,            target: order_cancel_rate,      fmt: pct}
+  - {label: "Fleet utilisation",        metric: fleet_utilisation_frac, target: fleet_utilisation,      fmt: pct}
+  - {label: "Inventory turns (annual)", metric: inventory_turns_annual, target: inventory_turns_annual, fmt: num}
+
+# --------------------------------------------------------------------------
+# Value waterfall — a top line, then everything eroding it.
+# --------------------------------------------------------------------------
+# --------------------------------------------------------------------------
+# Narrative slides. The deck used to hardcode this prose, which meant a second
+# domain rendered a supply-chain story over marketplace data. The panels are
+# now built from the tagged finding's own evidence; only the framing lives here.
+# --------------------------------------------------------------------------
+narrative:
+  trap:
+    title: "One store looks like an inventory problem"
+    subtitle: "It is not. This is the distinction the analysis exists to make"
+    tag: misdiagnosis_guard
+    chart: store_diagnosis
+    intuitive_cause: "inventory"
+
+waterfall:
+  base: {label: "Gross margin", metric: gross_margin_aed}
+  net_label: "Net contribution"
+  items:
+    - {label: "Lost margin — unavailability",   metric: stockout_cost_aed,        kind: leak}
+    - {label: "Waste — expiry write-off",       metric: waste_cost_aed,           kind: leak}
+    - {label: "Cancelled-order cost",           metric: cancel_cost_aed,          kind: leak}
+    - {label: "Supplier short-shipment cost",   metric: supplier_short_cost_aed,  kind: leak}
+    - {label: "Inventory holding cost",         metric: holding_cost_aed,         kind: leak}
+    - {label: "Fleet cost",                     metric: fleet_cost_aed,           kind: cost}
+
+# --------------------------------------------------------------------------
+# Service and operational targets
+# --------------------------------------------------------------------------
+targets:
+  fill_rate:              {target: 0.97,  floor: 0.95,  direction: higher_better}
+  waste_rate:             {target: 0.020, ceiling: 0.030, direction: lower_better}
+  otif:                   {target: 0.95,  floor: 0.90,  direction: higher_better}
+  supplier_lead_time_cv:  {target: 0.20,  ceiling: 0.35, direction: lower_better}
+  delivery_minutes_p50:   {target: 20,    ceiling: 25,  direction: lower_better}
+  order_cancel_rate:      {target: 0.025, ceiling: 0.040, direction: lower_better}
+  fleet_utilisation:      {target: 0.85,  ceiling: 0.95, floor: 0.65, direction: band}
+  days_of_cover_ambient:  {target: 12,    ceiling: 21,  floor: 5,  direction: band}
+  days_of_cover_chilled:  {target: 4,     ceiling: 7,   floor: 2,  direction: band}
+  # Dark-store grocery turns fast — the range is fresh-dominated, not FMCG-shelf
+  inventory_turns_annual: {target: 45,    floor: 30,    direction: higher_better}
+
+# --------------------------------------------------------------------------
+# Cost assumptions — used to convert operational failures into AED
+# --------------------------------------------------------------------------
+costs:
+  # Holding cost as an annual % of inventory value (capital, space, insurance,
+  # shrink risk). Quick-commerce chilled networks sit high.
+  inventory_holding_annual_pct: 0.22
+
+  # A stockout costs the lost gross margin, plus a behavioural penalty: some
+  # share of customers who hit an out-of-stock do not come back this cycle.
+  stockout_margin_multiplier: 1.35
+  stockout_multiplier_note: >
+    Lost margin x 1.35. The 0.35 uplift represents downstream basket
+    abandonment and reduced repeat rate following an unfulfilled line.
+    ASSUMPTION — not derived from this dataset. Sensitivity: 1.0-1.7.
+
+  # A cancelled order burns picking labour and rider time with zero revenue.
+  cancelled_order_cost_aed: 11.50
+  cancelled_order_cost_note: >
+    Picking labour (~4 min at AED 22/hr = 1.5) + rider dispatch and return
+    (~10.0). ASSUMPTION. Sensitivity: 8-16 AED.
+
+  # Fleet — a captain runs ~3 drops an hour over a 6-hour shift
+  captain_shift_cost_aed: 120.0
+  cost_per_drop_aed: 2.00
+  deliveries_per_captain_shift: 18
+
+  # Slot economics — what a shelf slot must earn to justify itself
+  slot_cost_aed_month: 41.0
+  slot_cost_note: >
+    Rent + chilled utilities + handling, divided by slot capacity across the
+    network. ASSUMPTION derived from rent_aed_month / slot_capacity.
+
+  # Expediting / air-freight premium if a supplier gap must be closed fast
+  expedite_premium_pct: 0.18
+
+# --------------------------------------------------------------------------
+# Data-quality gate
+# --------------------------------------------------------------------------
+# The analysis is not allowed to run on data that fails these. Severity
+# 'critical' blocks; 'high' degrades confidence; below that is disclosed only.
+quality_gate:
+  max_duplicate_pk_pct:       {threshold: 0.02, severity: critical}
+  max_orphan_fk_pct:          {threshold: 0.01, severity: critical}
+  max_null_pct_key_measure:   {threshold: 0.05, severity: high}
+  max_negative_pct:           {threshold: 0.01, severity: high}
+  max_impossible_value_pct:   {threshold: 0.005, severity: medium}
+  min_date_coverage_pct:      {threshold: 0.95, severity: high}
+  max_reconciliation_gap_pct: {threshold: 0.02, severity: high}
+
+  # Each unresolved issue reduces the confidence attached to findings that
+  # depend on the affected table.
+  confidence_penalty:
+    critical: 1.00      # findings from this table are suppressed entirely
+    high:     0.25
+    medium:   0.10
+    low:      0.03
+
+# --------------------------------------------------------------------------
+# Materiality — what is worth an executive's attention
+# --------------------------------------------------------------------------
+materiality:
+  # A finding must clear this to appear in the brief at all.
+  min_annualised_impact_aed: 60000
+  # A finding above this is escalated regardless of confidence.
+  escalation_impact_aed: 750000
+  # Maximum findings surfaced in the executive summary.
+  max_headline_findings: 5
+
+# --------------------------------------------------------------------------
+# Recommendation framing
+# --------------------------------------------------------------------------
+recommendations:
+  effort_scale: [low, medium, high]
+  horizon_buckets:
+    immediate: "0-30 days"
+    near_term: "1-3 months"
+    structural: "3-12 months"
+  # Owners the tool is allowed to assign work to.
+  owners:
+    - Supply Chain Director
+    - Procurement Lead
+    - Category Manager
+    - Network Operations Manager
+    - Fleet Operations Manager
+    - Demand Planning Lead
+  # An action is only recommended if payback is inside this window.
+  max_payback_months: 12
+  # Confidence below this is presented as "investigate", not "act".
+  act_confidence_threshold: 0.65
+
+  # ---- capture rate ----------------------------------------------------
+  # The share of a finding's quantified impact that a well-executed action
+  # actually recovers. Never 100%: some of every leak is structural, and
+  # assuming full recovery is the most common way a business case lies.
+  capture_rate:
+    cadence_change:             0.65
+    pack_resize:                0.60
+    supplier_remediation:       0.55
+    assortment_rationalisation: 0.70
+    fleet_scheduling:           0.75
+    fleet_headcount:            0.85
+    seasonal_playbook:          0.50
+
+  # ---- cost of acting --------------------------------------------------
+  cost_assumptions:
+    # Suppliers price smaller lots higher. Applied to the purchase value of
+    # affected lines.
+    pack_resize_unit_cost_premium_pct: 0.015
+    # Second-sourcing costs more per unit than a sole-source contract.
+    dual_source_premium_pct: 0.030
+    # Range reset: relabelling, planogram change, stock run-down.
+    delist_cost_per_slot_aed: 65
+    # Replanning a review calendar: system config, supplier renegotiation of
+    # order windows, training.
+    process_change_cost_aed: 25000
+    # Building and running a seasonal playbook.
+    seasonal_playbook_cost_aed: 40000
+    # Re-timing existing shifts costs scheduling effort, not headcount.
+    shift_reschedule_cost_aed: 15000

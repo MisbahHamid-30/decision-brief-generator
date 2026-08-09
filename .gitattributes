@@ -1,0 +1,13 @@
+# Normalise line endings so the repository stores LF regardless of platform.
+# Without this, Git on Windows prints an LF→CRLF warning for every text file on
+# the first `git add` — harmless, but it buries any real message in the noise.
+* text=auto eol=lf
+
+# Binary files Git must not touch.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.docx  binary
+*.pptx  binary
+*.xlsx  binary
+*.pdf   binary
