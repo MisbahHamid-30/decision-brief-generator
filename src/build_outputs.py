@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import warnings
@@ -178,6 +179,15 @@ def main(profile: str = DEFAULT_PROFILE, out_dir: str | None = None):
     print("rendering dashboard ...")
     dash = write_dashboard(payload, os.path.join(out, "dashboard.html"))
     print(f"  {dash}")
+
+    # Keep the GitHub Pages copy in sync. Copying it by hand once meant the
+    # published dashboard silently kept stale chart images after later rebuilds
+    # — the numbers still matched, so nothing looked wrong.
+    if profile == DEFAULT_PROFILE:
+        pages = os.path.join(ROOT, "docs", "index.html")
+        if os.path.isdir(os.path.dirname(pages)):
+            shutil.copyfile(dash, pages)
+            print(f"  docs/index.html (GitHub Pages copy)")
 
     here = os.path.dirname(os.path.abspath(__file__))
     print("rendering Word brief ...")
