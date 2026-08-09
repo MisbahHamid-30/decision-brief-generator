@@ -13,11 +13,13 @@
 
 | | |
 |---|---|
-| **Live dashboard** | https://YOUR-USERNAME.github.io/decision-brief-generator/ |
-| **Full dataset** (126 MB, 9 CSVs) | `PASTE_DRIVE_LINK_HERE` |
-| **Word brief** | [`outputs/Decision-Brief.docx`](outputs/Decision-Brief.docx) |
-| **Slide deck** | [`outputs/Decision-Brief.pptx`](outputs/Decision-Brief.pptx) |
-| **Verification report** | [`outputs/verification_report.txt`](outputs/verification_report.txt) |
+| **Live dashboard** | https://misbahhamid-30.github.io/decision-brief-generator/ |
+| **Datasets** (Drive) | `PASTE_DRIVE_LINK_HERE` |
+| **Word brief** — supply chain | [`outputs/Decision-Brief.docx`](outputs/Decision-Brief.docx) |
+| **Slide deck** — supply chain | [`outputs/Decision-Brief.pptx`](outputs/Decision-Brief.pptx) |
+| **Word brief** — marketplace | [`outputs_rides/Decision-Brief.docx`](outputs_rides/Decision-Brief.docx) |
+| **Slide deck** — marketplace | [`outputs_rides/Decision-Brief.pptx`](outputs_rides/Decision-Brief.pptx) |
+| **Verification** | [supply chain 26/26](outputs/verification_report.txt) · [rides 10/10](outputs_rides/verification_report.txt) |
 
 ---
 

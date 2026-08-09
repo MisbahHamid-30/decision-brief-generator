@@ -32,8 +32,19 @@ Use the same email as your GitHub account so the commits are attributed to you.
 
 ### Step 1.3 — Push the project
 
-In PowerShell, from the project folder. **Replace `YOUR-USERNAME` with your real
-GitHub username** on the `git remote` line — it is a placeholder, not a command.
+First, **copy your repository URL from GitHub** rather than typing it. On the
+page shown straight after creating the repo, or via the green **Code** button,
+there is an HTTPS URL with a copy icon:
+
+```
+https://github.com/<your-username>/decision-brief-generator.git
+```
+
+Copying it avoids the most common failure here — pasting a placeholder like
+`YOUR-USERNAME` literally, which produces a remote pointing at a repository that
+does not exist.
+
+Then, in PowerShell from the project folder:
 
 ```powershell
 cd "$env:USERPROFILE\Desktop\Decision Brief Generator"
@@ -42,7 +53,28 @@ git init
 git add .
 git commit -m "Decision Brief Generator: raw data to costed executive decisions"
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/decision-brief-generator.git
+```
+
+Now set the remote, pasting the URL you copied in place of the one below.
+`set-url` is used rather than `add` because it works whether or not a remote
+already exists — `git remote add` errors out on a second attempt and silently
+leaves the old, wrong URL in place.
+
+```powershell
+git remote add origin https://github.com/PASTE-YOURS-HERE/decision-brief-generator.git
+git remote set-url origin https://github.com/PASTE-YOURS-HERE/decision-brief-generator.git
+```
+
+**Check it before pushing:**
+
+```powershell
+git remote -v
+```
+
+Both lines must show your real username. If either still reads
+`PASTE-YOURS-HERE` or `YOUR-USERNAME`, re-run the `set-url` command.
+
+```powershell
 git push -u origin main
 ```
 
@@ -165,10 +197,10 @@ including two misdiagnosis traps, verified by 36 independent checks.
 
 | Field | Value |
 |---|---|
-| Prototype link | `https://github.com/YOUR-USERNAME/decision-brief-generator` |
-| Live demo | `https://YOUR-USERNAME.github.io/decision-brief-generator/` |
+| Prototype link | `https://github.com/MisbahHamid-30/decision-brief-generator` |
+| Live demo | `https://misbahhamid-30.github.io/decision-brief-generator/` |
 | Dataset link | your Drive folder URL |
-| Summary | the 98-word text above |
+| Summary | the 96-word text above |
 
 If the form takes only one link, submit the **GitHub repo** — the README leads
 with the live dashboard and the screenshots, so everything else is one click
