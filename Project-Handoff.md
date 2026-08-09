@@ -144,29 +144,42 @@ utilisation and drop density.
 
 ---
 
-## 5. Folder structure (target)
+## 5. Folder structure (as built)
+
+The original plan in this section named an `insights.py` and a `data/raw/` that
+were never built — ranking ended up inside `findings.py`, and inputs live under
+their profile. This is the real layout.
 
 ```
-Decision Brief Generator/
-├─ Project-Handoff.md          ← this file
-├─ TASKS.md                    ← task register
-├─ ARCHITECTURE.md             ← detailed design
-├─ data/
-│  ├─ raw/                     ← input CSV/XLSX
-│  └─ dummy/                   ← generated synthetic Careem dataset
+decision-brief-generator/
+├─ README.md  RUNNING.md  ARCHITECTURE.md  PORTABILITY.md
+├─ Project-Handoff.md  TASKS.md  SUBMISSION.md      ← working records
 ├─ config/
-│  ├─ semantic_map.yaml        ← column → business concept mapping
-│  └─ business_rules.yaml      ← targets, thresholds, cost assumptions
+│  ├─ careem_quik/    semantic_map.yaml, business_rules.yaml
+│  └─ careem_rides/   semantic_map.yaml, business_rules.yaml
+├─ data/
+│  ├─ DATA_DICTIONARY.md  DATA_DICTIONARY_RIDES.md
+│  ├─ samples/        committed 2,000-row extracts
+│  ├─ careem_quik/    generated, git-ignored
+│  └─ careem_rides/   generated, git-ignored
 ├─ src/
-│  ├─ ingest.py
-│  ├─ quality.py
+│  ├─ ingest.py  quality.py  findings.py           ← domain-independent
+│  ├─ recommend.py  recommend_rides.py
+│  ├─ run_analysis.py  build_outputs.py  make_samples.py
+│  ├─ generate_dummy_data.py  generate_rides_data.py
+│  ├─ verify_signals.py  verify_outputs.py  verify_rides.py
+│  ├─ audit_project.py                             ← repo consistency audit
 │  ├─ analysis/
-│  ├─ insights.py
-│  ├─ recommend.py
+│  │  ├─ kpi_base.py  registry.py                  ← domain-independent
+│  │  ├─ kpi.py  detectors.py                      ← supply chain
+│  │  └─ kpi_rides.py  detectors_rides.py          ← marketplace
 │  └─ render/
-├─ outputs/                    ← generated briefs, dashboards, decks
-└─ skill/
-   └─ SKILL.md                 ← the reusable Claude skill wrapper
+│     ├─ theme.py  dashboard.py  brief_docx.js  deck_pptx.js
+│     └─ charts.py  charts_rides.py
+├─ docs/           GitHub Pages dashboard + screenshots
+├─ outputs/        supply-chain deliverables
+├─ outputs_rides/  marketplace deliverables
+└─ skill/SKILL.md
 ```
 
 ---

@@ -29,22 +29,25 @@ data/*.csv
 Run it:
 
 ```bash
-python3 src/run_analysis.py     # analysis only → findings.json, analysis_report.md
-python3 src/build_outputs.py    # everything    → .docx, .html, .pptx, charts
-python3 src/verify_signals.py   # acceptance test against known ground truth
+python3 src/generate_dummy_data.py               # the datasets are not committed
+python3 src/build_outputs.py                     # everything → .docx, .html, .pptx
+python3 src/build_outputs.py --profile careem_rides --out outputs_rides
+python3 src/run_analysis.py                      # analysis only, no documents
+python3 src/verify_outputs.py                    # independent verification
 ```
 
-Node dependencies for the document renderers:
+Node dependencies for the `.docx` and `.pptx` renderers — optional; everything
+else runs without them:
 
 ```bash
-cd /tmp && npm install docx pptxgenjs
+npm install          # from the project root, reads package.json
 ```
 
 ## Pointing it at a different dataset
 
 Two config files carry everything domain-specific. No analysis code changes.
 
-**`config/semantic_map.yaml`** binds raw columns to business concepts. Analysis
+**`config/<profile>/semantic_map.yaml`** binds raw columns to business concepts. Analysis
 code never names a raw column — it asks for a concept (`sold_units`, `revenue`,
 `city`) and the map resolves it. Declare:
 
@@ -55,7 +58,7 @@ code never names a raw column — it asks for a concept (`sold_units`, `revenue`
   `dimension` is used for segmentation
 - `derived` — formulas the KPI engine evaluates
 
-**`config/business_rules.yaml`** carries judgement:
+**`config/<profile>/business_rules.yaml`** carries judgement:
 
 - `targets` — what good looks like, with `direction` (`higher_better`,
   `lower_better`, `band`)
@@ -159,17 +162,39 @@ problems" is unfalsifiable.
 
 ## Files
 
+Domain-independent — reused unchanged across profiles:
+
 ```
-config/semantic_map.yaml     column → concept binding
-config/business_rules.yaml   targets, costs, gates, materiality
-src/ingest.py                loading, profiling, semantic access
-src/quality.py               the gate
-src/findings.py              Finding, Evidence, confidence, ranking
-src/analysis/kpi.py          KPI engine
-src/analysis/detectors.py    the detectors
-src/recommend.py             actions and their economics
-src/render/                  charts, dashboard, docx, pptx
-src/run_analysis.py          analysis runner
-src/build_outputs.py         full build
-src/verify_signals.py        acceptance test
+src/ingest.py                    loading, profiling, semantic access
+src/quality.py                   the data-quality gate
+src/findings.py                  Finding, Evidence, confidence, ranking
+src/analysis/kpi_base.py         period, annualisation, config-driven
+                                 scorecard and waterfall
+src/analysis/registry.py         domain → engine, detectors, charts
+src/recommend.py                 recommendation economics
+src/render/theme.py              palette and typography
+src/render/dashboard.py          HTML dashboard
+src/render/brief_docx.js         Word brief
+src/render/deck_pptx.js          PowerPoint deck
+src/run_analysis.py              analysis runner
+src/build_outputs.py             full build
+src/make_samples.py              committed sample extracts
 ```
+
+Per-domain — one set for each profile:
+
+```
+config/<profile>/semantic_map.yaml     column → concept binding
+config/<profile>/business_rules.yaml   targets, costs, gates, materiality,
+                                       scorecard and waterfall definitions
+src/analysis/kpi_<domain>.py           the domain's metrics
+src/analysis/detectors_<domain>.py     the domain's detectors
+src/recommend_<domain>.py              the domain's action templates
+src/render/charts_<domain>.py          the domain's charts
+src/generate_<domain>_data.py          synthetic data generator
+src/verify_<domain>.py                 acceptance test
+```
+
+Two profiles ship. `careem_quik` uses the unsuffixed files (`kpi.py`,
+`detectors.py`, `recommend.py`, `charts.py`) for historical reasons — it was
+built first, before the split existed.

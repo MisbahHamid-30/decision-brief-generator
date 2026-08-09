@@ -164,16 +164,18 @@ Each run overwrites the previous one. If you want to keep a version, copy the
 
 Three steps. No analysis code changes.
 
-**1. Put your CSVs somewhere**, e.g. `data/my_data/`.
+**1. Create a profile.** Pick a name — say `acme_ops` — then put your CSVs in
+`data/<profile>/` and your two config files in `config/<profile>/`. The two
+folders must share the same name; that is what ties them together.
 
-**2. Describe them in `config/semantic_map.yaml`.** For each file, declare its
+**2. Describe them in `config/<profile>/semantic_map.yaml`.** For each file, declare its
 role (`fact`, `dimension` or `bridge`), its primary key or grain, its date
 column and its foreign keys. Then map your column names to the concepts the
 analysis speaks — `sold_units`, `revenue`, `city` and so on. The analysis code
 never refers to a raw column name, only to a concept, which is what makes this
 portable.
 
-**3. Set your targets and costs in `config/business_rules.yaml`** — what good
+**3. Set your targets and costs in `config/<profile>/business_rules.yaml`** — what good
 looks like, and how an operational failure converts into money. Every assumption
 here is printed in the brief's appendix so it can be challenged.
 

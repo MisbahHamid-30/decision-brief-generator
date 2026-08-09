@@ -1,7 +1,15 @@
 # Architecture & Scenario Design — Decision Brief Generator
 
-**Version:** 0.1 (draft, awaiting sign-off)
-**Date:** 2026-08-02
+**Version:** 1.1
+**Date:** 2026-08-03
+
+> **Scope of this document.** It describes the design of the **`careem_quik`
+> supply-chain profile**, which was built first and drove the architecture.
+> A second profile (`careem_rides`, a ride-hailing marketplace) was later added
+> to test whether that architecture generalised. It did not, without changes —
+> see [`PORTABILITY.md`](PORTABILITY.md) for what broke and what it cost. The
+> pipeline described below is accurate; what has changed since is that config
+> and domain logic are now per-profile rather than global.
 
 ---
 
@@ -85,13 +93,13 @@ data/raw/*.csv
                        → data_quality_report.json
       │
       ▼
-[2] SEMANTIC LAYER ──► config/semantic_map.yaml binds columns to concepts
-                       config/business_rules.yaml holds targets & assumptions
+[2] SEMANTIC LAYER ──► config/<profile>/semantic_map.yaml binds columns to concepts
+                       config/<profile>/business_rules.yaml holds targets & assumptions
                        (fill-rate target, waste target, cost of a stockout,
                         holding cost %, service-level target)
       │
       ▼
-[3] ANALYSIS ────────► seven analyzers, each emits Finding objects
+[3] ANALYSIS ────────► eight detectors, each emits Finding objects
       │                 · descriptive & trend      · seasonality decomposition
       │                 · variance decomposition   · anomaly detection
       │                 · Pareto / ABC-XYZ         · segment contribution

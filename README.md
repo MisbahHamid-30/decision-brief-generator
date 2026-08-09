@@ -65,8 +65,9 @@ Demonstrated on a synthetic UAE dark-store grocery network: 8 stores, 266 SKUs,
 | FLT-01 | One store: 31 min deliveries vs 20 network median, 8.5% cancellations — **and the best fill rate in the network** | AED 98k/yr |
 | SEA-01 | A +51% demand window with 40% of orders after 20:00, recurring annually | AED 84k/yr |
 
+Total identified leakage after stripping double-counted symptoms: **AED 983k/yr**.
 Six recommendations follow, worth **AED 727k/yr net** of the cost of acting, on
-AED 103k of one-off investment.
+**AED 103k** of one-off investment.
 
 ---
 
@@ -149,6 +150,21 @@ D. Integrity        7/7    no double counting, no orphan claims, all deliverable
 
 TOTAL 26/26 checks passed
 ```
+
+Four checks run in total, and all four pass from a clean clone:
+
+| Command | Checks | What it proves |
+|---|---|---|
+| `python src/verify_signals.py` | 6/6 | the planted signals are in the supply-chain data |
+| `python src/verify_outputs.py` | 26/26 | the brief's numbers survive independent recomputation |
+| `python src/verify_rides.py` | 10/10 | the pipeline recovers the marketplace signals too |
+| `python src/audit_project.py` | 12/12 | the repository is internally consistent — every documented path exists, every link resolves, every command names a real script, headline figures match the payload, and both profiles are completely wired |
+
+The last one exists because the documentation drifted behind the code during
+development — config paths moved, a file listing went stale, a setup guide was
+left addressed to a reader who could not exist. Those were all found by hand,
+one at a time, by whoever happened to open the file. The audit makes that
+repeatable instead.
 
 The dataset contains **six deliberately planted signals**. The pipeline must find
 all six unaided. Without that, "the analysis found five problems" is an

@@ -3,7 +3,7 @@ Decision Brief Generator — synthetic dataset generator
 ======================================================
 Scenario : Careem Quik dark-store grocery network, UAE
 Period   : 2025-01-01 .. 2026-06-30 (546 days, daily grain)
-Output   : 8 related CSVs in data/dummy/
+Output   : 9 related CSVs in data/careem_quik/
 
 This produces ILLUSTRATIVE SYNTHETIC DATA. No Careem data is used.
 

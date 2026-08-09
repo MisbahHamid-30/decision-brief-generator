@@ -3,7 +3,7 @@ KPI engine
 ==========
 Computes the supply-chain metric set once, at every grain the detectors need,
 and converts operational failures into money using the declared assumptions in
-`config/business_rules.yaml`.
+`config/<profile>/business_rules.yaml`.
 
 Everything downstream reads from here. No detector recomputes a KPI, so the
 brief, the dashboard and the deck cannot disagree with each other about what

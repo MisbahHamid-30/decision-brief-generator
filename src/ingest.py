@@ -7,7 +7,7 @@ references a raw column name.
 
 Design rule: the analysis engine asks for a *concept* ("sold_units",
 "revenue", "city") and the semantic layer resolves it to whatever table and
-column happen to carry it. Repoint `config/semantic_map.yaml` at a different
+column happen to carry it. Repoint `config/<profile>/semantic_map.yaml` at a different
 dataset and the rest of the pipeline follows unchanged.
 
 Usage
