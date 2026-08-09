@@ -52,6 +52,8 @@ raw CSVs
 
 Demonstrated on a synthetic UAE dark-store grocery network: 8 stores, 266 SKUs,
 8 suppliers, 18 months daily — **3.1 million rows** across 9 related tables.
+(A second profile runs the same pipeline over a ride-hailing marketplace — see
+[the portability test](#the-portability-claim-tested).)
 
 | | Finding | Worth |
 |---|---|---:|
@@ -165,13 +167,15 @@ python src/verify_signals.py   # planted-signal acceptance test
 python src/verify_outputs.py   # independent verification
 ```
 
-The dataset is not in this repo — it is 126 MB and fully reproducible:
+Neither dataset is in this repo — together they are ~174 MB, and both are fully
+reproducible from seeded scripts:
 
 ```bash
-python src/generate_dummy_data.py      # seeded, regenerates it exactly
+python src/generate_dummy_data.py      # supply chain → data/careem_quik/
+python src/generate_rides_data.py      # marketplace  → data/careem_rides/
 ```
 
-Or download it from the Drive link above and drop it in `data/careem_quik/`.
+Or download them from the Drive link above and drop each folder into `data/`.
 
 **See [`RUNNING.md`](RUNNING.md)** for step-by-step setup, troubleshooting, and
 how to point the pipeline at different data.
