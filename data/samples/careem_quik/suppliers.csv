@@ -1,0 +1,9 @@
+supplier_id,supplier_name,category_focus,promised_lead_time_days,payment_terms_days,min_order_aed
+SUP01,Gulf Fresh Produce,Fresh Produce,2,14,3000
+SUP02,Emirates Dairy Co,Dairy & Eggs,2,21,2500
+SUP03,Al Ain Poultry & Meats,Meat & Poultry,3,30,4000
+SUP04,Modern Bakehouse,Bakery,1,7,1200
+SUP05,Gulf Beverage Distribution,Beverages,4,45,6000
+SUP06,Nova Pantry Trading,Pantry & Snacks,6,60,8000
+SUP07,Arctic Frozen Logistics,Frozen,5,45,5000
+SUP08,HomeCare Distributors,Home & Personal Care,7,60,7000

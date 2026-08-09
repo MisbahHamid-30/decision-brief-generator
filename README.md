@@ -14,7 +14,8 @@
 | | |
 |---|---|
 | **Live dashboard** | https://misbahhamid-30.github.io/decision-brief-generator/ |
-| **Datasets** (Drive) | `PASTE_DRIVE_LINK_HERE` |
+| **Full datasets** (Drive) | https://drive.google.com/drive/folders/1zZB-89sijqsABALomzSrZTa4O4vzpmNm?usp=sharing |
+| **Sample data** — browse in-page | [`data/samples/`](data/samples/) |
 | **Word brief** — supply chain | [`outputs/Decision-Brief.docx`](outputs/Decision-Brief.docx) |
 | **Slide deck** — supply chain | [`outputs/Decision-Brief.pptx`](outputs/Decision-Brief.pptx) |
 | **Word brief** — marketplace | [`outputs_rides/Decision-Brief.docx`](outputs_rides/Decision-Brief.docx) |
@@ -167,15 +168,19 @@ python src/verify_signals.py   # planted-signal acceptance test
 python src/verify_outputs.py   # independent verification
 ```
 
-Neither dataset is in this repo — together they are ~174 MB, and both are fully
-reproducible from seeded scripts:
+The full datasets are ~174 MB and are not committed. Download them from the
+Drive link above and drop each folder into `data/`, or regenerate them — the
+generators are seeded, so you get byte-identical files:
 
 ```bash
 python src/generate_dummy_data.py      # supply chain → data/careem_quik/
 python src/generate_rides_data.py      # marketplace  → data/careem_rides/
 ```
 
-Or download them from the Drive link above and drop each folder into `data/`.
+To see the structure without downloading anything, [`data/samples/`](data/samples/)
+holds a 2,000-row extract of every table (1.1 MB). Those are for inspection
+only — a random slice cannot reproduce findings that live in patterns across a
+whole series, which is precisely what the planted signals are.
 
 **See [`RUNNING.md`](RUNNING.md)** for step-by-step setup, troubleshooting, and
 how to point the pipeline at different data.

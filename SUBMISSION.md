@@ -87,7 +87,7 @@ LF→CRLF warning for every file, which is harmless but noisy.
 After a minute or two the dashboard is live at:
 
 ```
-https://YOUR-USERNAME.github.io/decision-brief-generator/
+https://misbahhamid-30.github.io/decision-brief-generator/
 ```
 
 This is the strongest single artefact in the submission — an interactive
@@ -95,16 +95,16 @@ dashboard they can click through without installing anything.
 
 ### Step 1.5 — Fill in the links in the README
 
-Open `README.md` and replace the two placeholders near the top:
+Both links are already filled in:
 
-- `https://YOUR-USERNAME.github.io/decision-brief-generator/` → your real Pages URL
-- `PASTE_DRIVE_LINK_HERE` → the Drive link from Requirement 2
+- Pages: `https://misbahhamid-30.github.io/decision-brief-generator/`
+- Drive: `https://drive.google.com/drive/folders/1zZB-89sijqsABALomzSrZTa4O4vzpmNm?usp=sharing`
 
-Then:
+Push any outstanding edits:
 
 ```powershell
-git add README.md
-git commit -m "Add live links"
+git add .
+git commit -m "Add dataset link"
 git push
 ```
 
@@ -184,7 +184,7 @@ including two misdiagnosis traps, verified by 36 independent checks.
 |---|---|
 | Prototype link | `https://github.com/MisbahHamid-30/decision-brief-generator` |
 | Live demo | `https://misbahhamid-30.github.io/decision-brief-generator/` |
-| Dataset link | your Drive folder URL |
+| Dataset link | `https://drive.google.com/drive/folders/1zZB-89sijqsABALomzSrZTa4O4vzpmNm?usp=sharing` |
 | Summary | the 96-word text above |
 
 If the form takes only one link, submit the **GitHub repo** — the README leads

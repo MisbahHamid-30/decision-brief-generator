@@ -1,0 +1,267 @@
+sku_id,sku_name,category,storage_temp,supplier_id,unit_price_aed,unit_cost_aed,gross_margin_pct,shelf_life_days,case_pack
+SKU0001,Marina Fresh Produce Item 01,Fresh Produce,chilled,SUP01,5.48,4.07,25.7,5,6
+SKU0002,Gulf Gold Fresh Produce Item 02,Fresh Produce,chilled,SUP01,15.74,11.62,26.2,8,12
+SKU0003,Nadec Fresh Produce Item 03,Fresh Produce,chilled,SUP01,14.69,10.36,29.4,4,7
+SKU0004,Quik Value Fresh Produce Item 04,Fresh Produce,chilled,SUP01,11.33,8.6,24.1,6,9
+SKU0005,Al Rawabi Fresh Produce Item 05,Fresh Produce,chilled,SUP01,7.42,5.4,27.2,6,9
+SKU0006,Emirates Select Fresh Produce Item 06,Fresh Produce,chilled,SUP01,20.69,15.7,24.1,5,10
+SKU0007,Freshly Fresh Produce Item 07,Fresh Produce,chilled,SUP01,10.62,7.74,27.1,5,12
+SKU0008,Quik Value Fresh Produce Item 08,Fresh Produce,chilled,SUP01,5.98,4.5,24.8,4,12
+SKU0009,Nadec Fresh Produce Item 09,Fresh Produce,chilled,SUP01,6.16,4.73,23.3,8,8
+SKU0010,Oasis Fresh Produce Item 10,Fresh Produce,chilled,SUP01,13.39,9.44,29.5,6,10
+SKU0011,Quik Value Fresh Produce Item 11,Fresh Produce,chilled,SUP01,22.22,16.51,25.7,7,10
+SKU0012,Gulf Gold Fresh Produce Item 12,Fresh Produce,chilled,SUP01,18.24,13.34,26.9,6,9
+SKU0013,Zafran Fresh Produce Item 13,Fresh Produce,chilled,SUP01,8.3,6.28,24.3,6,7
+SKU0014,Nadec Fresh Produce Item 14,Fresh Produce,chilled,SUP01,9.1,7.01,22.9,6,12
+SKU0015,Quik Value Fresh Produce Item 15,Fresh Produce,chilled,SUP01,23.68,18.01,23.9,7,11
+SKU0016,Almarai Fresh Produce Item 16,Fresh Produce,chilled,SUP01,25.15,20.09,20.1,7,8
+SKU0017,Desert Bloom Fresh Produce Item 17,Fresh Produce,chilled,SUP01,21.35,15.78,26.1,4,9
+SKU0018,Marina Fresh Produce Item 18,Fresh Produce,chilled,SUP01,12.52,9.93,20.7,8,7
+SKU0019,Freshly Fresh Produce Item 19,Fresh Produce,chilled,SUP01,26.26,19.26,26.7,6,11
+SKU0020,Nadec Fresh Produce Item 20,Fresh Produce,chilled,SUP01,9.29,6.67,28.2,6,6
+SKU0021,Sunrise Fresh Produce Item 21,Fresh Produce,chilled,SUP01,23.97,18.1,24.5,4,7
+SKU0022,Freshly Fresh Produce Item 22,Fresh Produce,chilled,SUP01,15.62,11.52,26.2,7,9
+SKU0023,Oasis Fresh Produce Item 23,Fresh Produce,chilled,SUP01,9.17,7.18,21.7,4,10
+SKU0024,Emirates Select Fresh Produce Item 24,Fresh Produce,chilled,SUP01,4.62,3.68,20.4,4,11
+SKU0025,Desert Bloom Fresh Produce Item 25,Fresh Produce,chilled,SUP01,18.38,14.48,21.2,6,6
+SKU0026,Gulf Gold Fresh Produce Item 26,Fresh Produce,chilled,SUP01,5.46,4.22,22.8,4,8
+SKU0027,Emirates Select Fresh Produce Item 27,Fresh Produce,chilled,SUP01,4.78,3.36,29.8,6,10
+SKU0028,Freshly Fresh Produce Item 28,Fresh Produce,chilled,SUP01,7.24,5.7,21.3,8,8
+SKU0029,Emirates Select Fresh Produce Item 29,Fresh Produce,chilled,SUP01,27.88,21.46,23.0,7,8
+SKU0030,Zafran Fresh Produce Item 30,Fresh Produce,chilled,SUP01,3.91,2.77,29.0,6,8
+SKU0031,Sunrise Fresh Produce Item 31,Fresh Produce,chilled,SUP01,22.33,16.56,25.8,4,7
+SKU0032,Gulf Gold Fresh Produce Item 32,Fresh Produce,chilled,SUP01,25.5,20.07,21.3,8,9
+SKU0033,Gulf Gold Fresh Produce Item 33,Fresh Produce,chilled,SUP01,21.38,16.48,22.9,8,9
+SKU0034,Oasis Fresh Produce Item 34,Fresh Produce,chilled,SUP01,12.45,9.2,26.1,8,10
+SKU0035,Al Rawabi Dairy Item 01,Dairy & Eggs,chilled,SUP02,20.86,16.75,19.7,23,11
+SKU0036,Marina Dairy Item 02,Dairy & Eggs,chilled,SUP02,31.57,25.05,20.6,22,11
+SKU0037,Marina Dairy Item 03,Dairy & Eggs,chilled,SUP02,22.48,17.45,22.4,14,17
+SKU0038,Sunrise Dairy Item 04,Dairy & Eggs,chilled,SUP02,23.38,18.51,20.8,11,16
+SKU0039,Quik Value Dairy Item 05,Dairy & Eggs,chilled,SUP02,11.93,9.63,19.3,18,13
+SKU0040,Gulf Gold Dairy Item 06,Dairy & Eggs,chilled,SUP02,30.73,23.74,22.7,17,16
+SKU0041,Zafran Dairy Item 07,Dairy & Eggs,chilled,SUP02,5.75,4.33,24.7,16,16
+SKU0042,Emirates Select Dairy Item 08,Dairy & Eggs,chilled,SUP02,26.23,20.8,20.7,15,17
+SKU0043,Oasis Dairy Item 09,Dairy & Eggs,chilled,SUP02,31.63,23.87,24.5,18,15
+SKU0044,Desert Bloom Dairy Item 10,Dairy & Eggs,chilled,SUP02,14.55,11.41,21.6,16,13
+SKU0045,Sunrise Dairy Item 11,Dairy & Eggs,chilled,SUP02,10.44,8.17,21.8,20,12
+SKU0046,Zafran Dairy Item 12,Dairy & Eggs,chilled,SUP02,6.75,5.49,18.6,18,11
+SKU0047,Oasis Dairy Item 13,Dairy & Eggs,chilled,SUP02,21.12,15.74,25.5,22,12
+SKU0048,Freshly Dairy Item 14,Dairy & Eggs,chilled,SUP02,5.46,4.19,23.2,12,17
+SKU0049,Almarai Dairy Item 15,Dairy & Eggs,chilled,SUP02,6.02,4.82,19.9,16,15
+SKU0050,Freshly Dairy Item 16,Dairy & Eggs,chilled,SUP02,18.79,14.51,22.8,10,12
+SKU0051,Quik Value Dairy Item 17,Dairy & Eggs,chilled,SUP02,25.45,19.57,23.1,20,17
+SKU0052,Oasis Dairy Item 18,Dairy & Eggs,chilled,SUP02,15.15,12.38,18.3,20,10
+SKU0053,Sunrise Dairy Item 19,Dairy & Eggs,chilled,SUP02,23.79,18.78,21.0,20,15
+SKU0054,Oasis Dairy Item 20,Dairy & Eggs,chilled,SUP02,19.75,15.44,21.8,20,15
+SKU0055,Almarai Dairy Item 21,Dairy & Eggs,chilled,SUP02,27.24,21.86,19.8,21,17
+SKU0056,Quik Value Dairy Item 22,Dairy & Eggs,chilled,SUP02,6.51,4.96,23.9,21,10
+SKU0057,Marina Dairy Item 23,Dairy & Eggs,chilled,SUP02,16.05,12.33,23.1,15,10
+SKU0058,Zafran Dairy Item 24,Dairy & Eggs,chilled,SUP02,23.76,19.05,19.8,24,15
+SKU0059,Nadec Dairy Item 25,Dairy & Eggs,chilled,SUP02,28.76,22.04,23.4,10,10
+SKU0060,Almarai Dairy Item 26,Dairy & Eggs,chilled,SUP02,29.08,22.95,21.1,23,15
+SKU0061,Marina Dairy Item 27,Dairy & Eggs,chilled,SUP02,9.32,7.29,21.8,17,12
+SKU0062,Al Rawabi Dairy Item 28,Dairy & Eggs,chilled,SUP02,31.95,24.92,22.0,13,14
+SKU0063,Freshly Meat Item 01,Meat & Poultry,chilled,SUP03,55.12,41.59,24.6,6,5
+SKU0064,Quik Value Meat Item 02,Meat & Poultry,chilled,SUP03,65.04,46.03,29.2,6,7
+SKU0065,Zafran Meat Item 03,Meat & Poultry,chilled,SUP03,64.55,47.76,26.0,5,7
+SKU0066,Al Rawabi Meat Item 04,Meat & Poultry,chilled,SUP03,32.55,24.41,25.0,11,7
+SKU0067,Al Rawabi Meat Item 05,Meat & Poultry,chilled,SUP03,51.91,38.13,26.5,6,7
+SKU0068,Emirates Select Meat Item 06,Meat & Poultry,chilled,SUP03,71.63,50.9,28.9,5,8
+SKU0069,Quik Value Meat Item 07,Meat & Poultry,chilled,SUP03,67.92,47.96,29.4,12,4
+SKU0070,Nadec Meat Item 08,Meat & Poultry,chilled,SUP03,23.41,16.1,31.2,12,5
+SKU0071,Marina Meat Item 09,Meat & Poultry,chilled,SUP03,32.42,22.16,31.6,11,8
+SKU0072,Marina Meat Item 10,Meat & Poultry,chilled,SUP03,69.33,47.33,31.7,7,6
+SKU0073,Emirates Select Meat Item 11,Meat & Poultry,chilled,SUP03,17.37,13.21,24.0,12,4
+SKU0074,Al Rawabi Meat Item 12,Meat & Poultry,chilled,SUP03,58.83,40.02,32.0,8,4
+SKU0075,Emirates Select Meat Item 13,Meat & Poultry,chilled,SUP03,70.52,48.29,31.5,9,4
+SKU0076,Marina Meat Item 14,Meat & Poultry,chilled,SUP03,14.84,10.47,29.5,6,8
+SKU0077,Al Rawabi Meat Item 15,Meat & Poultry,chilled,SUP03,17.99,13.69,23.9,7,6
+SKU0078,Oasis Meat Item 16,Meat & Poultry,chilled,SUP03,27.44,20.63,24.8,8,6
+SKU0079,Marina Meat Item 17,Meat & Poultry,chilled,SUP03,46.3,33.15,28.4,7,8
+SKU0080,Marina Meat Item 18,Meat & Poultry,chilled,SUP03,43.56,31.67,27.3,5,6
+SKU0081,Gulf Gold Meat Item 19,Meat & Poultry,chilled,SUP03,72.8,56.35,22.6,7,4
+SKU0082,Zafran Meat Item 20,Meat & Poultry,chilled,SUP03,36.44,26.06,28.5,7,7
+SKU0083,Almarai Bakery Item 01,Bakery,ambient,SUP04,14.5,9.98,31.2,6,6
+SKU0084,Emirates Select Bakery Item 02,Bakery,ambient,SUP04,11.7,7.65,34.6,5,8
+SKU0085,Oasis Bakery Item 03,Bakery,ambient,SUP04,17.61,11.53,34.5,6,6
+SKU0086,Marina Bakery Item 04,Bakery,ambient,SUP04,19.26,12.37,35.8,4,7
+SKU0087,Marina Bakery Item 05,Bakery,ambient,SUP04,5.09,3.56,30.0,4,6
+SKU0088,Emirates Select Bakery Item 06,Bakery,ambient,SUP04,11.16,7.69,31.1,6,9
+SKU0089,Emirates Select Bakery Item 07,Bakery,ambient,SUP04,20.22,12.75,37.0,5,10
+SKU0090,Freshly Bakery Item 08,Bakery,ambient,SUP04,13.65,8.38,38.6,3,10
+SKU0091,Desert Bloom Bakery Item 09,Bakery,ambient,SUP04,19.26,11.99,37.7,3,9
+SKU0092,Almarai Bakery Item 10,Bakery,ambient,SUP04,20.36,13.24,35.0,3,8
+SKU0093,Almarai Bakery Item 11,Bakery,ambient,SUP04,5.95,3.65,38.6,3,10
+SKU0094,Marina Bakery Item 12,Bakery,ambient,SUP04,20.54,13.38,34.8,6,8
+SKU0095,Oasis Bakery Item 13,Bakery,ambient,SUP04,20.31,14.05,30.8,3,9
+SKU0096,Gulf Gold Bakery Item 14,Bakery,ambient,SUP04,11.06,7.28,34.2,6,9
+SKU0097,Marina Bakery Item 15,Bakery,ambient,SUP04,6.02,4.15,31.1,5,6
+SKU0098,Marina Bakery Item 16,Bakery,ambient,SUP04,15.83,9.64,39.1,6,7
+SKU0099,Nadec Bakery Item 17,Bakery,ambient,SUP04,16.26,10.45,35.7,6,10
+SKU0100,Marina Bakery Item 18,Bakery,ambient,SUP04,6.92,4.5,35.0,3,10
+SKU0101,Quik Value Beverages Item 01,Beverages,ambient,SUP05,9.75,7.77,20.3,373,22
+SKU0102,Freshly Beverages Item 02,Beverages,ambient,SUP05,6.09,4.38,28.0,202,21
+SKU0103,Freshly Beverages Item 03,Beverages,ambient,SUP05,19.38,13.83,28.6,336,12
+SKU0104,Almarai Beverages Item 04,Beverages,ambient,SUP05,18.19,13.87,23.8,366,21
+SKU0105,Oasis Beverages Item 05,Beverages,ambient,SUP05,25.21,18.44,26.9,275,22
+SKU0106,Almarai Beverages Item 06,Beverages,ambient,SUP05,18.54,13.19,28.9,400,24
+SKU0107,Almarai Beverages Item 07,Beverages,ambient,SUP05,31.98,23.54,26.4,386,21
+SKU0108,Marina Beverages Item 08,Beverages,ambient,SUP05,8.56,6.21,27.4,281,12
+SKU0109,Oasis Beverages Item 09,Beverages,ambient,SUP05,11.62,8.83,24.0,286,22
+SKU0110,Zafran Beverages Item 10,Beverages,ambient,SUP05,2.6,1.94,25.5,210,24
+SKU0111,Zafran Beverages Item 11,Beverages,ambient,SUP05,4.27,3.26,23.6,186,12
+SKU0112,Al Rawabi Beverages Item 12,Beverages,ambient,SUP05,33.36,24.98,25.1,263,22
+SKU0113,Oasis Beverages Item 13,Beverages,ambient,SUP05,31.57,24.71,21.7,329,17
+SKU0114,Desert Bloom Beverages Item 14,Beverages,ambient,SUP05,30.24,23.03,23.8,187,20
+SKU0115,Oasis Beverages Item 15,Beverages,ambient,SUP05,3.05,2.42,20.5,354,16
+SKU0116,Emirates Select Beverages Item 16,Beverages,ambient,SUP05,4.0,3.14,21.4,187,23
+SKU0117,Nadec Beverages Item 17,Beverages,ambient,SUP05,9.15,6.63,27.6,376,22
+SKU0118,Gulf Gold Beverages Item 18,Beverages,ambient,SUP05,12.67,9.28,26.8,380,21
+SKU0119,Almarai Beverages Item 19,Beverages,ambient,SUP05,29.04,22.09,23.9,270,20
+SKU0120,Sunrise Beverages Item 20,Beverages,ambient,SUP05,9.0,6.93,23.0,273,15
+SKU0121,Almarai Beverages Item 21,Beverages,ambient,SUP05,24.71,18.9,23.5,326,23
+SKU0122,Marina Beverages Item 22,Beverages,ambient,SUP05,19.13,14.64,23.5,356,18
+SKU0123,Almarai Beverages Item 23,Beverages,ambient,SUP05,32.5,25.3,22.2,226,20
+SKU0124,Quik Value Beverages Item 24,Beverages,ambient,SUP05,19.58,15.35,21.6,214,23
+SKU0125,Almarai Beverages Item 25,Beverages,ambient,SUP05,30.55,21.6,29.3,376,17
+SKU0126,Freshly Beverages Item 26,Beverages,ambient,SUP05,25.28,19.43,23.1,373,20
+SKU0127,Sunrise Beverages Item 27,Beverages,ambient,SUP05,24.74,18.35,25.8,218,22
+SKU0128,Marina Beverages Item 28,Beverages,ambient,SUP05,27.56,19.75,28.3,218,16
+SKU0129,Zafran Beverages Item 29,Beverages,ambient,SUP05,26.06,20.63,20.8,315,14
+SKU0130,Nadec Beverages Item 30,Beverages,ambient,SUP05,9.97,7.08,29.0,303,23
+SKU0131,Al Rawabi Snacks Item 01,Snacks & Confectionery,ambient,SUP06,24.39,17.2,29.5,237,19
+SKU0132,Freshly Snacks Item 02,Snacks & Confectionery,ambient,SUP06,3.24,2.19,32.5,135,17
+SKU0133,Sunrise Snacks Item 03,Snacks & Confectionery,ambient,SUP06,3.97,2.86,27.9,230,18
+SKU0134,Quik Value Snacks Item 04,Snacks & Confectionery,ambient,SUP06,4.96,3.22,35.0,232,23
+SKU0135,Marina Snacks Item 05,Snacks & Confectionery,ambient,SUP06,21.67,13.81,36.3,247,16
+SKU0136,Oasis Snacks Item 06,Snacks & Confectionery,ambient,SUP06,29.6,20.16,31.9,277,14
+SKU0137,Oasis Snacks Item 07,Snacks & Confectionery,ambient,SUP06,18.91,12.09,36.1,143,15
+SKU0138,Gulf Gold Snacks Item 08,Snacks & Confectionery,ambient,SUP06,19.97,14.33,28.3,205,16
+SKU0139,Desert Bloom Snacks Item 09,Snacks & Confectionery,ambient,SUP06,9.15,6.07,33.7,173,19
+SKU0140,Quik Value Snacks Item 10,Snacks & Confectionery,ambient,SUP06,19.67,13.37,32.1,215,13
+SKU0141,Al Rawabi Snacks Item 11,Snacks & Confectionery,ambient,SUP06,3.79,2.72,28.3,279,23
+SKU0142,Emirates Select Snacks Item 12,Snacks & Confectionery,ambient,SUP06,20.0,14.45,27.8,258,13
+SKU0143,Oasis Snacks Item 13,Snacks & Confectionery,ambient,SUP06,13.42,9.59,28.5,290,14
+SKU0144,Emirates Select Snacks Item 14,Snacks & Confectionery,ambient,SUP06,20.93,13.18,37.0,188,14
+SKU0145,Al Rawabi Snacks Item 15,Snacks & Confectionery,ambient,SUP06,22.29,15.51,30.4,268,17
+SKU0146,Freshly Snacks Item 16,Snacks & Confectionery,ambient,SUP06,25.2,17.85,29.2,121,17
+SKU0147,Quik Value Snacks Item 17,Snacks & Confectionery,ambient,SUP06,11.65,7.48,35.8,280,12
+SKU0148,Marina Snacks Item 18,Snacks & Confectionery,ambient,SUP06,26.25,16.32,37.8,157,22
+SKU0149,Quik Value Snacks Item 19,Snacks & Confectionery,ambient,SUP06,5.61,3.75,33.1,279,24
+SKU0150,Quik Value Snacks Item 20,Snacks & Confectionery,ambient,SUP06,17.99,12.34,31.4,138,24
+SKU0151,Emirates Select Snacks Item 21,Snacks & Confectionery,ambient,SUP06,10.74,7.06,34.2,298,16
+SKU0152,Oasis Snacks Item 22,Snacks & Confectionery,ambient,SUP06,19.52,12.4,36.5,258,16
+SKU0153,Desert Bloom Snacks Item 23,Snacks & Confectionery,ambient,SUP06,29.11,19.13,34.3,137,23
+SKU0154,Almarai Snacks Item 24,Snacks & Confectionery,ambient,SUP06,8.44,5.87,30.4,247,21
+SKU0155,Oasis Snacks Item 25,Snacks & Confectionery,ambient,SUP06,24.58,18.19,26.0,220,21
+SKU0156,Nadec Snacks Item 26,Snacks & Confectionery,ambient,SUP06,10.8,6.97,35.4,230,24
+SKU0157,Freshly Pantry Staples Item 01,Pantry Staples,ambient,SUP06,4.67,3.56,23.8,293,11
+SKU0158,Gulf Gold Pantry Staples Item 02,Pantry Staples,ambient,SUP06,7.19,4.87,32.3,461,6
+SKU0159,Almarai Pantry Staples Item 03,Pantry Staples,ambient,SUP06,48.84,36.68,24.9,426,9
+SKU0160,Nadec Pantry Staples Item 04,Pantry Staples,ambient,SUP06,42.55,31.65,25.6,431,11
+SKU0161,Sunrise Pantry Staples Item 05,Pantry Staples,ambient,SUP06,9.34,6.97,25.4,210,9
+SKU0162,Freshly Pantry Staples Item 06,Pantry Staples,ambient,SUP06,17.72,12.83,27.6,287,11
+SKU0163,Freshly Pantry Staples Item 07,Pantry Staples,ambient,SUP06,13.56,9.2,32.2,329,11
+SKU0164,Sunrise Pantry Staples Item 08,Pantry Staples,ambient,SUP06,50.05,33.13,33.8,365,12
+SKU0165,Oasis Pantry Staples Item 09,Pantry Staples,ambient,SUP06,16.74,11.14,33.5,522,12
+SKU0166,Quik Value Pantry Staples Item 10,Pantry Staples,ambient,SUP06,25.2,16.88,33.0,348,7
+SKU0167,Oasis Pantry Staples Item 11,Pantry Staples,ambient,SUP06,31.79,24.32,23.5,521,10
+SKU0168,Nadec Pantry Staples Item 12,Pantry Staples,ambient,SUP06,42.03,31.15,25.9,207,11
+SKU0169,Marina Pantry Staples Item 13,Pantry Staples,ambient,SUP06,7.65,5.78,24.5,385,7
+SKU0170,Desert Bloom Pantry Staples Item 14,Pantry Staples,ambient,SUP06,7.0,4.7,32.8,196,10
+SKU0171,Oasis Pantry Staples Item 15,Pantry Staples,ambient,SUP06,13.72,9.27,32.4,188,9
+SKU0172,Nadec Pantry Staples Item 16,Pantry Staples,ambient,SUP06,56.41,42.5,24.7,307,7
+SKU0173,Nadec Pantry Staples Item 17,Pantry Staples,ambient,SUP06,52.63,40.72,22.6,394,8
+SKU0174,Nadec Pantry Staples Item 18,Pantry Staples,ambient,SUP06,55.01,37.74,31.4,415,7
+SKU0175,Almarai Pantry Staples Item 19,Pantry Staples,ambient,SUP06,46.37,35.83,22.7,286,10
+SKU0176,Gulf Gold Pantry Staples Item 20,Pantry Staples,ambient,SUP06,25.64,18.93,26.2,438,12
+SKU0177,Al Rawabi Pantry Staples Item 21,Pantry Staples,ambient,SUP06,58.38,40.65,30.4,297,7
+SKU0178,Marina Pantry Staples Item 22,Pantry Staples,ambient,SUP06,13.62,10.58,22.3,271,10
+SKU0179,Desert Bloom Pantry Staples Item 23,Pantry Staples,ambient,SUP06,29.61,19.74,33.3,417,7
+SKU0180,Freshly Pantry Staples Item 24,Pantry Staples,ambient,SUP06,56.07,40.74,27.3,490,9
+SKU0181,Oasis Pantry Staples Item 25,Pantry Staples,ambient,SUP06,13.82,9.21,33.3,241,9
+SKU0182,Freshly Pantry Staples Item 26,Pantry Staples,ambient,SUP06,52.28,38.61,26.1,356,10
+SKU0183,Emirates Select Frozen Foods Item 01,Frozen Foods,frozen,SUP07,17.57,12.43,29.2,223,7
+SKU0184,Desert Bloom Frozen Foods Item 02,Frozen Foods,frozen,SUP07,34.4,25.34,26.3,253,12
+SKU0185,Al Rawabi Frozen Foods Item 03,Frozen Foods,frozen,SUP07,12.72,9.44,25.8,328,11
+SKU0186,Sunrise Frozen Foods Item 04,Frozen Foods,frozen,SUP07,48.62,36.09,25.8,363,7
+SKU0187,Freshly Frozen Foods Item 05,Frozen Foods,frozen,SUP07,16.27,11.03,32.2,211,8
+SKU0188,Quik Value Frozen Foods Item 06,Frozen Foods,frozen,SUP07,54.08,38.92,28.0,263,8
+SKU0189,Nadec Frozen Foods Item 07,Frozen Foods,frozen,SUP07,29.68,20.16,32.1,278,11
+SKU0190,Zafran Frozen Foods Item 08,Frozen Foods,frozen,SUP07,35.71,24.75,30.7,231,9
+SKU0191,Quik Value Frozen Foods Item 09,Frozen Foods,frozen,SUP07,40.43,28.89,28.5,272,10
+SKU0192,Marina Frozen Foods Item 10,Frozen Foods,frozen,SUP07,40.0,26.97,32.6,187,6
+SKU0193,Sunrise Frozen Foods Item 11,Frozen Foods,frozen,SUP07,41.08,27.14,33.9,193,8
+SKU0194,Desert Bloom Frozen Foods Item 12,Frozen Foods,frozen,SUP07,48.89,33.9,30.7,365,7
+SKU0195,Oasis Frozen Foods Item 13,Frozen Foods,frozen,SUP07,14.17,10.67,24.7,231,9
+SKU0196,Marina Frozen Foods Item 14,Frozen Foods,frozen,SUP07,52.02,36.54,29.8,343,8
+SKU0197,Nadec Frozen Foods Item 15,Frozen Foods,frozen,SUP07,33.28,22.89,31.2,335,12
+SKU0198,Oasis Frozen Foods Item 16,Frozen Foods,frozen,SUP07,22.7,16.38,27.8,322,11
+SKU0199,Al Rawabi Frozen Foods Item 17,Frozen Foods,frozen,SUP07,44.72,31.28,30.1,350,11
+SKU0200,Al Rawabi Frozen Foods Item 18,Frozen Foods,frozen,SUP07,52.16,37.61,27.9,189,11
+SKU0201,Marina Frozen Foods Item 19,Frozen Foods,frozen,SUP07,10.97,7.44,32.2,223,7
+SKU0202,Quik Value Frozen Foods Item 20,Frozen Foods,frozen,SUP07,12.32,8.96,27.3,348,11
+SKU0203,Nadec Ready Meals Item 01,Ready Meals,chilled,SUP04,25.88,17.48,32.4,5,5
+SKU0204,Quik Value Ready Meals Item 02,Ready Meals,chilled,SUP04,25.72,17.64,31.4,5,7
+SKU0205,Freshly Ready Meals Item 03,Ready Meals,chilled,SUP04,37.16,23.96,35.5,5,5
+SKU0206,Oasis Ready Meals Item 04,Ready Meals,chilled,SUP04,23.08,15.1,34.6,5,7
+SKU0207,Al Rawabi Ready Meals Item 05,Ready Meals,chilled,SUP04,25.01,14.97,40.1,3,6
+SKU0208,Emirates Select Ready Meals Item 06,Ready Meals,chilled,SUP04,25.2,15.06,40.3,2,8
+SKU0209,Marina Ready Meals Item 07,Ready Meals,chilled,SUP04,19.61,11.93,39.1,4,4
+SKU0210,Oasis Ready Meals Item 08,Ready Meals,chilled,SUP04,41.76,24.59,41.1,2,6
+SKU0211,Freshly Ready Meals Item 09,Ready Meals,chilled,SUP04,36.64,21.71,40.8,5,5
+SKU0212,Zafran Ready Meals Item 10,Ready Meals,chilled,SUP04,22.78,14.16,37.8,4,4
+SKU0213,Freshly Ready Meals Item 11,Ready Meals,chilled,SUP04,19.5,12.99,33.4,3,6
+SKU0214,Gulf Gold Ready Meals Item 12,Ready Meals,chilled,SUP04,31.25,18.36,41.2,3,6
+SKU0215,Nadec Ready Meals Item 13,Ready Meals,chilled,SUP04,36.32,23.43,35.5,5,7
+SKU0216,Almarai Ready Meals Item 14,Ready Meals,chilled,SUP04,34.67,20.81,40.0,5,4
+SKU0217,Emirates Select Home Item 01,Home & Cleaning,ambient,SUP08,23.59,16.91,28.3,722,11
+SKU0218,Al Rawabi Home Item 02,Home & Cleaning,ambient,SUP08,40.37,27.82,31.1,797,8
+SKU0219,Oasis Home Item 03,Home & Cleaning,ambient,SUP08,35.96,25.73,28.5,563,8
+SKU0220,Almarai Home Item 04,Home & Cleaning,ambient,SUP08,45.37,31.32,31.0,621,6
+SKU0221,Oasis Home Item 05,Home & Cleaning,ambient,SUP08,14.23,9.49,33.3,807,8
+SKU0222,Al Rawabi Home Item 06,Home & Cleaning,ambient,SUP08,46.0,29.64,35.6,584,8
+SKU0223,Al Rawabi Home Item 07,Home & Cleaning,ambient,SUP08,31.94,22.49,29.6,880,9
+SKU0224,Sunrise Home Item 08,Home & Cleaning,ambient,SUP08,13.88,8.95,35.5,571,7
+SKU0225,Quik Value Home Item 09,Home & Cleaning,ambient,SUP08,24.7,15.57,37.0,662,8
+SKU0226,Sunrise Home Item 10,Home & Cleaning,ambient,SUP08,27.93,19.38,30.6,695,12
+SKU0227,Marina Home Item 11,Home & Cleaning,ambient,SUP08,25.58,16.4,35.9,773,8
+SKU0228,Gulf Gold Home Item 12,Home & Cleaning,ambient,SUP08,37.1,26.44,28.7,566,10
+SKU0229,Emirates Select Home Item 13,Home & Cleaning,ambient,SUP08,33.93,21.45,36.8,820,8
+SKU0230,Gulf Gold Home Item 14,Home & Cleaning,ambient,SUP08,36.57,25.78,29.5,752,11
+SKU0231,Nadec Home Item 15,Home & Cleaning,ambient,SUP08,17.79,11.92,33.0,582,6
+SKU0232,Zafran Home Item 16,Home & Cleaning,ambient,SUP08,42.42,28.23,33.4,753,10
+SKU0233,Sunrise Home Item 17,Home & Cleaning,ambient,SUP08,40.81,28.2,30.9,862,8
+SKU0234,Quik Value Home Item 18,Home & Cleaning,ambient,SUP08,46.62,28.46,39.0,585,9
+SKU0235,Nadec Home Item 19,Home & Cleaning,ambient,SUP08,41.86,25.33,39.5,643,8
+SKU0236,Emirates Select Home Item 20,Home & Cleaning,ambient,SUP08,11.16,7.43,33.4,855,6
+SKU0237,Quik Value Personal Care Item 01,Personal Care,ambient,SUP08,52.67,32.19,38.9,773,9
+SKU0238,Desert Bloom Personal Care Item 02,Personal Care,ambient,SUP08,53.34,29.64,44.4,877,7
+SKU0239,Emirates Select Personal Care Item 03,Personal Care,ambient,SUP08,61.98,37.3,39.8,643,8
+SKU0240,Al Rawabi Personal Care Item 04,Personal Care,ambient,SUP08,10.18,6.79,33.3,627,6
+SKU0241,Al Rawabi Personal Care Item 05,Personal Care,ambient,SUP08,52.45,34.0,35.2,777,9
+SKU0242,Marina Personal Care Item 06,Personal Care,ambient,SUP08,18.51,11.11,40.0,719,6
+SKU0243,Al Rawabi Personal Care Item 07,Personal Care,ambient,SUP08,17.0,10.74,36.8,715,10
+SKU0244,Gulf Gold Personal Care Item 08,Personal Care,ambient,SUP08,43.69,24.23,44.5,717,8
+SKU0245,Quik Value Personal Care Item 09,Personal Care,ambient,SUP08,59.97,40.45,32.5,708,12
+SKU0246,Quik Value Personal Care Item 10,Personal Care,ambient,SUP08,13.63,9.13,33.0,625,10
+SKU0247,Al Rawabi Personal Care Item 11,Personal Care,ambient,SUP08,50.85,32.24,36.6,814,8
+SKU0248,Freshly Personal Care Item 12,Personal Care,ambient,SUP08,61.7,36.02,41.6,898,11
+SKU0249,Oasis Personal Care Item 13,Personal Care,ambient,SUP08,35.62,20.72,41.8,815,7
+SKU0250,Freshly Personal Care Item 14,Personal Care,ambient,SUP08,10.33,6.1,41.0,643,7
+SKU0251,Desert Bloom Personal Care Item 15,Personal Care,ambient,SUP08,15.63,9.4,39.9,823,6
+SKU0252,Emirates Select Personal Care Item 16,Personal Care,ambient,SUP08,16.35,9.75,40.4,600,9
+SKU0253,Emirates Select Personal Care Item 17,Personal Care,ambient,SUP08,21.15,11.72,44.6,783,11
+SKU0254,Freshly Personal Care Item 18,Personal Care,ambient,SUP08,11.92,6.75,43.4,817,11
+SKU0255,Freshly Baby Item 01,Baby & Kids,ambient,SUP08,33.25,25.97,21.9,392,6
+SKU0256,Sunrise Baby Item 02,Baby & Kids,ambient,SUP08,28.09,19.95,29.0,414,8
+SKU0257,Emirates Select Baby Item 03,Baby & Kids,ambient,SUP08,40.39,30.99,23.3,328,11
+SKU0258,Quik Value Baby Item 04,Baby & Kids,ambient,SUP08,71.22,52.13,26.8,512,8
+SKU0259,Nadec Baby Item 05,Baby & Kids,ambient,SUP08,39.71,28.05,29.4,488,10
+SKU0260,Gulf Gold Baby Item 06,Baby & Kids,ambient,SUP08,50.74,37.49,26.1,462,10
+SKU0261,Emirates Select Baby Item 07,Baby & Kids,ambient,SUP08,12.53,9.59,23.5,317,7
+SKU0262,Marina Baby Item 08,Baby & Kids,ambient,SUP08,17.45,13.25,24.1,323,9
+SKU0263,Oasis Baby Item 09,Baby & Kids,ambient,SUP08,22.19,16.51,25.6,339,12
+SKU0264,Quik Value Baby Item 10,Baby & Kids,ambient,SUP08,50.01,37.12,25.8,363,12
+SKU0265,Emirates Select Baby Item 11,Baby & Kids,ambient,SUP08,14.06,11.07,21.3,526,8
+SKU0266,Al Rawabi Baby Item 12,Baby & Kids,ambient,SUP08,71.05,55.53,21.8,493,6
