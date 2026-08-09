@@ -183,10 +183,12 @@ class Dataset:
 
         tables: dict[str, pd.DataFrame] = {}
         profiles: dict[str, TableProfile] = {}
+        missing: list[str] = []
 
         for name, spec in semantic["tables"].items():
             path = os.path.join(data_dir, spec["file"])
             if not os.path.exists(path):
+                missing.append(spec["file"])
                 if verbose:
                     print(f"  ! missing: {spec['file']}")
                 continue
@@ -198,6 +200,24 @@ class Dataset:
             if verbose:
                 print(f"  loaded {name:18s} {len(df):>9,} rows x {df.shape[1]:>2} cols"
                       f"  ({profiles[name].memory_mb:>6.1f} MB)")
+
+        # Fail here, with the fix, rather than several layers downstream with a
+        # KeyError naming a table the reader has never heard of. The datasets
+        # are not committed — they are large and reproducible — so a fresh
+        # clone hits this first, and the message has to say so.
+        if missing:
+            gen = {"careem_quik": "src/generate_dummy_data.py",
+                   "careem_rides": "src/generate_rides_data.py"}
+            script = gen.get(os.path.basename(data_dir.rstrip("/\\")),
+                             "the generator for this profile")
+            raise FileNotFoundError(
+                f"\n\n  {len(missing)} data file(s) not found in {data_dir}\n"
+                f"    missing: {', '.join(missing)}\n\n"
+                f"  The datasets are not committed to the repository — they are "
+                f"~174 MB and\n  fully reproducible. Generate this one with:\n\n"
+                f"      python {script}\n\n"
+                f"  Or download it from the Drive link in README.md and unpack "
+                f"it into\n  {data_dir}\n")
 
         return cls(tables, semantic, rules, profiles, data_dir)
 

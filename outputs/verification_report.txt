@@ -37,7 +37,7 @@ D. Integrity
   [PASS] every finding carries evidence, method and a derivation  — 12 findings checked
   [PASS] no finding references a link that does not exist
   [PASS] every recommendation states assumptions, risk and a success metric  — 7 recommendations checked
-  [PASS] all deliverables exist and are non-trivial  — 6 files
+  [PASS] all core deliverables exist and are non-trivial  — 4 files
   [PASS] synthetic-data labelling is present in the payload
 
 ==============================================================================

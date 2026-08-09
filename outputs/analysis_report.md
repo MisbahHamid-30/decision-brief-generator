@@ -17,9 +17,9 @@
 | Fleet utilisation | 86.7% | 85.0% | on target |
 | Inventory turns (annual) | 60.3 | 45.0 | on target |
 
-## Where the margin goes
+## Where the value goes
 
-Annualised, from AED 7.45m of gross margin.
+Annualised, starting from AED 7.45m of gross margin.
 
 | Item | Annualised | Type |
 |---|---:|---|
@@ -124,8 +124,8 @@ Total annualised leakage, root causes only (symptoms excluded to avoid double co
     - Cancellation rate: 0.08 (vs target 2.5%) [n=66,862]
     - Fleet utilisation: 1.25 (vs network median 81%)
     - Days above 100% utilisation: 0.99 (vs share of trading days)
-    - Fill rate: 0.91 (vs network median 90.6% — NOT a stock problem)
-    - Waste rate: 0.03 (vs network median 3.1%)
+    - Fill rate: 0.91 (vs network median 90.6% — the stock was on the shelf, so this is not a stock problem)
+    - Waste rate: 0.03 (vs network median 3.1% — inventory is not being mismanaged here either)
 
 ### SEA-01 — A 51% demand peak runs 2025-03-05 to 2025-04-01 with 40% of orders after 20:00 (vs 25% normally) — fill rate holds at only 91.1% through it
 

@@ -73,7 +73,7 @@ Total annualised leakage, root causes only (symptoms excluded to avoid double co
     - Unfulfilled rate in window: 0.5 (vs 7.8% in the same zone outside it) [n=11,586]
     - Surge in window: 1.76 × (vs 1.09× outside it)
     - Captains per request: 0.17 (vs network 0.443)
-    - Correlation of captain supply with surge: -0.45 (vs near zero means supply is price-inelastic here — raising surge will not fix it) [n=365]
+    - Correlation of captain supply with surge: -0.45 (vs negative — supply falls as surge rises here, so raising it further is counterproductive) [n=365]
     - Average wait in window: 11.14 min (vs 7.9 min outside it)
 
 ### ETA-01 — Business Bay, Yas Island promise arrival 4.3 min sooner than they deliver, and cancel 11% of trips against 4% elsewhere — the estimate causes the cancellation, not the wait

@@ -29,6 +29,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ingest import Dataset, ROOT, DEFAULT_PROFILE
 import quality
 import recommend
+import run_analysis
 from analysis import registry
 from render.theme import fmt_aed
 from render.dashboard import write_dashboard
@@ -175,6 +176,19 @@ def main(profile: str = DEFAULT_PROFILE, out_dir: str | None = None):
     payload_path = os.path.join(out, "brief_payload.json")
     with open(payload_path, "w") as f:
         json.dump(payload, f, indent=2, default=str)
+
+    # Also write everything run_analysis.py produces. This used to be split, so
+    # "build_outputs.py does everything" was false — it skipped the markdown
+    # reports, and the verification script then failed on their absence for
+    # anyone who followed the documented path.
+    print("writing analysis reports ...")
+    rep.to_json(os.path.join(out, "data_quality_report.json"))
+    with open(os.path.join(out, "data_quality_report.md"), "w") as f:
+        f.write(rep.to_markdown())
+    with open(os.path.join(out, "analysis_report.md"), "w") as f:
+        f.write(run_analysis.build_report(ds, k, rep, fs, rs))
+    for name in ("data_quality_report.md", "analysis_report.md"):
+        print(f"  {name}")
 
     print("rendering dashboard ...")
     dash = write_dashboard(payload, os.path.join(out, "dashboard.html"))

@@ -4,28 +4,44 @@ Two ways. Pick based on whether you want to install anything.
 
 ---
 
-## Option A — ask me to run it (nothing to install)
+## Option A — look at the output without installing anything
 
-In this chat, say:
+Every deliverable is committed, so you can inspect the result before deciding
+whether to run it.
 
-> Run the decision brief generator and show me the outputs.
-
-I run it in a Linux sandbox and the results land in `outputs/` in this folder,
-where you can open them normally. This is the fastest path and needs nothing on
-your machine.
-
-Useful variants:
-
-| Say this | What happens |
+| What | Where |
 |---|---|
-| "Run the full build" | Analysis + charts + Word + deck + dashboard |
-| "Just run the analysis" | Findings and reports only, no documents (faster) |
-| "Re-run the verification" | The 26 independent checks |
-| "Regenerate the data with a different seed" | New synthetic dataset, then re-analyse |
+| **Interactive dashboard** | [misbahhamid-30.github.io/decision-brief-generator](https://misbahhamid-30.github.io/decision-brief-generator/) — opens in a browser, nothing to install |
+| Executive brief (Word) | [`outputs/Decision-Brief.docx`](outputs/Decision-Brief.docx) |
+| Leadership deck | [`outputs/Decision-Brief.pptx`](outputs/Decision-Brief.pptx) |
+| Full analysis, including what was set aside | [`outputs/analysis_report.md`](outputs/analysis_report.md) |
+| Data-quality report | [`outputs/data_quality_report.md`](outputs/data_quality_report.md) |
+| Verification — 26 independent checks | [`outputs/verification_report.txt`](outputs/verification_report.txt) |
+| The same pipeline on a second domain | [`outputs_rides/`](outputs_rides/) |
+| Sample of the underlying data | [`data/samples/`](data/samples/) |
+
+The dashboard is a static file — all figures are computed by Python at build
+time and baked in. It makes no network calls, so it works offline and when
+emailed.
+
+To see the structure of the data without downloading 174 MB, `data/samples/`
+holds a 2,000-row extract of every table.
 
 ---
 
-## Option B — run it yourself on Windows
+## Option B — run it yourself
+
+Works on Windows, macOS and Linux. Commands are shown for PowerShell; on
+macOS/Linux use `python3` and forward slashes.
+
+### 0. Get the code
+
+```powershell
+git clone https://github.com/MisbahHamid-30/decision-brief-generator.git
+cd decision-brief-generator
+```
+
+Every command below assumes you are in that folder.
 
 ### 1. Install Python 3.10 or newer
 
@@ -43,7 +59,6 @@ everything else depends on it.
 ### 2. Install the Python packages
 
 ```powershell
-cd "$env:USERPROFILE\Desktop\Decision Brief Generator"
 pip install -r requirements.txt
 ```
 
@@ -74,10 +89,25 @@ project. The builder finds it automatically.
 If you skip this step the build still runs — it prints a note and produces
 everything except the two Office files.
 
-### 4. Run it
+### 4. Generate the data
+
+**Do not skip this.** The datasets are not in the repository — together they are
+~174 MB, and both are reproducible exactly from seeded scripts, so committing
+them would be waste. Without this step the pipeline stops with an error telling
+you to run it.
 
 ```powershell
-cd "$env:USERPROFILE\Desktop\Decision Brief Generator"
+python src\generate_dummy_data.py      # supply chain → data/careem_quik/
+python src\generate_rides_data.py      # marketplace  → data/careem_rides/
+```
+
+About a minute each. The seeds are fixed, so you get byte-identical files to the
+ones the published outputs were built from. (Alternatively, download them from
+the Drive link in the README and unpack each folder into `data/`.)
+
+### 5. Run it
+
+```powershell
 python src\build_outputs.py
 ```
 

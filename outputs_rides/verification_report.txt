@@ -22,9 +22,9 @@ Pipeline
   [PASS] every finding carries evidence, method and a derivation  — 4 findings
   [PASS] recommendation economics hold  — 3 recommendations
   [PASS] a recommendation with payback beyond the window is downgraded  — R3=act, R1=act, R2=investigate
+  [PASS] dashboard.html produced  — 180 KB
   [PASS] Decision-Brief.docx produced  — 122 KB
   [PASS] Decision-Brief.pptx produced  — 366 KB
-  [PASS] dashboard.html produced  — 180 KB
 
 ============================================================================
   10/10 checks passed
